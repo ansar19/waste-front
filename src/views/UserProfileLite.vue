@@ -4,16 +4,16 @@
     <d-row no-gutters class="page-header py-4">
       <d-col col sm="4" class="text-center text-sm-left mb-4 mb-sm-0">
         <span class="text-uppercase page-subtitle">Overview</span>
-        <h3 class="page-title">User Profile</h3>
+        <h3 class="page-title">Профиль пользователя</h3>
       </d-col>
     </d-row>
 
     <!-- Content -->
     <d-row>
-      <d-col lg="4">
+      <d-col lg="6">
         <upl-user-details />
       </d-col>
-      <d-col lg="8">
+      <d-col lg="6">
         <upl-user-account-details />
       </d-col>
     </d-row>
