@@ -47,6 +47,14 @@
                         Посмотреть
                       </button>
                     </router-link>
+                    <router-link to="/user-profile">
+                      <button
+                        type="button"
+                        class="btn btn-outline-info btn-sm mr-2"
+                      >
+                        Редактировать
+                      </button>
+                    </router-link>
                   </td>
                 </tr>
               </tbody>

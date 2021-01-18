@@ -34,6 +34,14 @@
               <i class="material-icons">open_in_new</i>
             </button>
           </router-link>
+          <router-link to="/add-new-record">
+            <button class="btn-info btn-small btn">
+              <i class="material-icons">visibility</i>
+            </button>
+          </router-link>
+          <button class="btn-danger btn-small btn">
+            <i class="material-icons">delete</i>
+          </button>
         </span>
       </template>
     </vue-good-table>
