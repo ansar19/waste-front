@@ -20,7 +20,7 @@
                       <d-input
                         id="utilizer-name"
                         placeholder="Введите название места утилиизации"
-                        v-model="utilizePlaceName"
+                        v-model="utilizerPlaceName"
                       />
                     </div>
 
@@ -66,7 +66,7 @@
 export default {
   data() {
     return {
-      utilizePlaceName: '',
+      utilizerPlaceName: '',
       utilizeType: '',
       utilizeTypeOptions: [
         {
