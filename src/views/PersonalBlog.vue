@@ -25,14 +25,14 @@
     </d-row>
 
     <d-row>
-      <!-- Users Overview -->
+      <!-- Time Distribution Overview -->
       <d-col lg="8" md="6" sm="12" class="mb-4">
-        <bo-users-overview />
+        <bo-distribution-by-time />
       </d-col>
 
-      <!-- Users by Device (lite) -->
+      <!-- Wastes by Types -->
       <d-col lg="4" md="6" sm="12" class="mb-4">
-        <bo-users-by-device />
+        <bo-wastes-by-types />
       </d-col>
     </d-row>
   </d-container>
@@ -40,14 +40,14 @@
 
 <script>
 import SmallStats from '@/components/common/SmallStats.vue';
-import UsersOverview from '@/components/blog/UsersOverview.vue';
-import UsersByDevice from '@/components/blog/UsersByDeviceLite.vue';
+import DistributionByTime from '@/components/stats/DistributionByTime.vue';
+import WastesByTypes from '@/components/stats/WastesByTypes.vue';
 
 export default {
   components: {
     SmallStats,
-    boUsersOverview: UsersOverview,
-    boUsersByDevice: UsersByDevice,
+    boDistributionByTime: DistributionByTime,
+    boWastesByTypes: WastesByTypes,
   },
   data() {
     return {
@@ -76,7 +76,7 @@ export default {
     smallStats() {
       return [
         {
-          label: 'Posts',
+          label: 'Записей',
           value: '2,390',
           percentage: '4.7%',
           increase: true,
@@ -93,7 +93,7 @@ export default {
           ],
         },
         {
-          label: 'Pages',
+          label: 'Принято отходов, т',
           value: '182',
           percentage: '12.4',
           increase: true,
@@ -110,7 +110,7 @@ export default {
           ],
         },
         {
-          label: 'Comments',
+          label: 'Вывезено отходов, т',
           value: '8,147',
           percentage: '3.8%',
           increase: false,
@@ -128,7 +128,7 @@ export default {
           ],
         },
         {
-          label: 'New Customers',
+          label: 'Опасные отходы, т',
           value: '29',
           percentage: '2.71%',
           increase: false,
@@ -146,7 +146,7 @@ export default {
           ],
         },
         {
-          label: 'Subscribers',
+          label: 'Не опасные отходы, т',
           value: '17,281',
           percentage: '2.4%',
           increase: false,

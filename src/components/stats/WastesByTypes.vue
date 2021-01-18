@@ -1,22 +1,24 @@
 <template>
   <div class="card card-small h-100">
-
     <!-- Card Header -->
     <div class="card-header border-bottom">
-      <h6 class="m-0">{{title}}</h6>
+      <h6 class="m-0">{{ title }}</h6>
     </div>
 
     <!-- Chart -->
     <div class="card-body d-flex py-0">
-      <canvas height="220" ref="canvas" class="blog-users-by-device m-auto"></canvas>
+      <canvas
+        height="220"
+        ref="canvas"
+        class="blog-users-by-device m-auto"
+      ></canvas>
     </div>
 
     <d-card-footer class="border-top">
       <d-row>
-
         <!-- Time Frame -->
         <d-col>
-          <d-select size="sm" value="last-week" style="max-width: 130px;">
+          <d-select size="sm" value="last-week" style="max-width: 130px">
             <option value="last-week">Last Week</option>
             <option value="today">Today</option>
             <option value="last-month">Last Month</option>
@@ -26,9 +28,8 @@
 
         <!-- View Full Report -->
         <d-col class="text-right view-report">
-          <a href="#">View full report &rarr;</a>
+          <a href="#">Посмотреть полную статистику &rarr;</a>
         </d-col>
-
       </d-row>
     </d-card-footer>
   </div>
@@ -38,24 +39,26 @@
 import Chart from '../../utils/chart';
 
 const defaultChartData = {
-  datasets: [{
-    hoverBorderColor: '#ffffff',
-    data: [68.3, 24.2, 7.5],
-    backgroundColor: [
-      'rgba(0,123,255,0.9)',
-      'rgba(0,123,255,0.5)',
-      'rgba(0,123,255,0.3)',
-    ],
-  }],
-  labels: ['Desktop', 'Tablet', 'Mobile'],
+  datasets: [
+    {
+      hoverBorderColor: '#ffffff',
+      data: [68.3, 24.2, 7.5],
+      backgroundColor: [
+        'rgba(0,123,255,0.9)',
+        'rgba(0,123,255,0.5)',
+        'rgba(0,123,255,0.3)',
+      ],
+    },
+  ],
+  labels: ['ТБО', 'Отрботанное масло', 'Нефтешлам'],
 };
 
 export default {
-  name: 'users-by-device',
+  name: 'wastes-by-types',
   props: {
     /**
-       * The chart config.
-       */
+     * The chart config.
+     */
     chartConfig: {
       type: Object,
       default() {
@@ -63,8 +66,8 @@ export default {
       },
     },
     /**
-       * The chart options.
-       */
+     * The chart options.
+     */
     chartOptions: {
       type: Object,
       default() {
@@ -72,8 +75,8 @@ export default {
       },
     },
     /**
-       * The chart data.
-       */
+     * The chart data.
+     */
     chartData: {
       type: Object,
       default() {
@@ -81,11 +84,11 @@ export default {
       },
     },
     /**
-       * The chart title.
-       */
+     * The chart title.
+     */
     title: {
       type: String,
-      default: 'Users by device',
+      default: 'Распределение вывезенных отходов, т',
     },
   },
   mounted() {

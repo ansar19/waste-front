@@ -10,23 +10,23 @@
         style="width: 100%"
       >
         <tr>
-          <th>ФИО:</th>
+          <th class="text-left">ФИО:</th>
           <td>{{ u.name }}</td>
         </tr>
         <tr>
-          <th>Email:</th>
+          <th class="text-left">Email:</th>
           <td>{{ u.email }}</td>
         </tr>
         <tr>
-          <th>Телефон:</th>
+          <th class="text-left">Телефон:</th>
           <td>{{ u.phone }}</td>
         </tr>
         <tr>
-          <th>Должность:</th>
+          <th class="text-left">Должность:</th>
           <td>{{ u.position }}</td>
         </tr>
         <tr>
-          <th>Био:</th>
+          <th class="text-left">Био:</th>
           <td>{{ u.bio }}</td>
         </tr>
       </table>
