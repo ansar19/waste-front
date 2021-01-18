@@ -24,5 +24,12 @@ export default function () {
     to: {
       name: 'errors',
     },
+  },
+  {
+    title: 'Utilizers',
+    htmlBefore: '<i class="material-icons">table_chart</i>',
+    to: {
+      name: 'utilizers',
+    },
   }];
 }

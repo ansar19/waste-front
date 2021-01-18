@@ -7,6 +7,11 @@ import Errors from './views/Errors.vue';
 import Users from './views/Users.vue';
 import History from './views/History.vue';
 import NewRecord from './components/log-book/NewRecord.vue';
+import Utilizers from './views/Utilizers.vue';
+import ShowUtilizer from './components/utilizer/ShowUtilizer.vue';
+import NewUtilizer from './components/utilizer/NewUtilizer.vue';
+import EditUtilizer from './components/utilizer/EditUtilizer.vue';
+
 
 Vue.use(Router);
 
@@ -48,6 +53,27 @@ export default new Router({
       path: '/users',
       name: 'users',
       component: Users,
+    },
+    
+    {
+      path: '/utilizers',
+      name: 'utilizers',
+      component: Utilizers,
+    },
+    {
+      path: '/show-utilizer',
+      name: 'show-utilizer',
+      component: ShowUtilizer,
+    },
+    {
+      path: '/new-utilizer',
+      name: 'new-utilizer',
+      component: NewUtilizer,
+    },
+    {
+      path: '/edit-utilizer',
+      name: 'edit-utilizer',
+      component: EditUtilizer,
     },
     {
       path: '/history',
