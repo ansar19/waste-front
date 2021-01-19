@@ -5,6 +5,7 @@ import PersonalBlog from './views/PersonalBlog.vue';
 import UserProfileLite from './views/UserProfileLite.vue';
 import Errors from './views/Errors.vue';
 import Users from './views/Users.vue';
+import UserDetails from "./components/user-profile/UserDetails";
 import History from './views/History.vue';
 import NewRecord from './components/log-book/NewRecord.vue';
 import Utilizers from './views/Utilizers.vue';
@@ -53,6 +54,11 @@ export default new Router({
       path: '/users',
       name: 'users',
       component: Users,
+    },
+    {
+      path: '/userdetails/:id',
+      name: 'UserDetails',
+      component: UserDetails,
     },
     
     {
