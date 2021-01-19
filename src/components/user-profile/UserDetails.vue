@@ -1,56 +1,56 @@
 <template>
-  <div class="card card-small mb-4 pt-3">
-    <div class="card-header border-bottom text-center">
-      <div class="mb-3 mx-auto"></div>
-      <!-- vertical table head example -->
-      <table
-        v-for="(u, index) in users"
-        :key="index"
-        class="table table-bordered"
-        style="width: 100%"
-      >
-        <tr>
-          <th class="text-left">ФИО:</th>
-          <td>{{ u.name }}</td>
-        </tr>
-        <tr>
-          <th class="text-left">Email:</th>
-          <td>{{ u.email }}</td>
-        </tr>
-        <tr>
-          <th class="text-left">Телефон:</th>
-          <td>{{ u.phone }}</td>
-        </tr>
-        <tr>
-          <th class="text-left">Должность:</th>
-          <td>{{ u.position }}</td>
-        </tr>
-        <tr>
-          <th class="text-left">Био:</th>
-          <td>{{ u.bio }}</td>
-        </tr>
-      </table>
+  <div  class="details">
+    <div class="card">
+      <div class="card-body">
+        <div class="d-flex flex-column align-items-center text-center">
+          <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
+          <div class="mt-3">
+            <h4>{{user.name}}</h4>
+            <p class="text-secondary mb-1">Full Stack Developer</p>
+            <p class="text-muted font-size-sm">{{user.createdAt}}</p>
+            <button class="btn btn-primary mr-3">Follow</button>
+            <router-link to="/users"><button class="btn btn-outline-primary">Back</button></router-link>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'user-details',
-  data() {
+  name: "UserDetails",
+  data(){
     return {
-      users: [
-        {
-          name: 'Екатерина Васильева',
-          position: 'Старший эколог',
-          bio: 'Закончила КазГУ им. Аль-Фараби, географ - эколог',
-          email: 'ekatya2015@mail.ru',
-          location: 'ул. Радужная, д. 28',
-          phone: '+7702 234 567 80',
-          accNumber: '123456789',
-        },
-      ],
-    };
-  },
-};
+      user:{
+        id: 1,
+        name: 'John',
+        createdAt: '2011-10-22'
+      }
+    }
+  }
+}
 </script>
+
+<style scoped>
+.card {
+  box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
+}
+.card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  word-wrap: break-word;
+  background-color: #fff;
+  background-clip: border-box;
+  border: 0 solid rgba(0,0,0,.125);
+  border-radius: .25rem;
+}
+
+.card-body {
+  flex: 1 1 auto;
+  min-height: 1px;
+  padding: 1rem;
+}
+</style>
