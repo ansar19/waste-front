@@ -5,8 +5,9 @@ import PersonalBlog from './views/PersonalBlog.vue';
 import UserProfileLite from './views/UserProfileLite.vue';
 import Errors from './views/Errors.vue';
 import Users from './views/Users.vue';
-import UserDetails from "./components/user-profile/UserDetails";
-import EditUserDetails from "./components/user-profile/EditUserDetails";
+import UserDetails from "./components/user-profile/UserDetails.vue";
+import EditUserDetails from "./components/user-profile/EditUserDetails.vue";
+import NewUser from "./components/user-profile/NewUser.vue";
 import History from './views/History.vue';
 import NewRecord from './components/log-book/NewRecord.vue';
 import Utilizers from './views/Utilizers.vue';
@@ -57,17 +58,17 @@ export default new Router({
       component: Users,
     },
     {
-      path: '/userdetails/:id',
+      path: '/user-details/:id',
       name: 'UserDetails',
       component: UserDetails,
     },
     {
-      path: '/newUser',
+      path: '/new-user',
       name: 'NewUser',
       component: NewUser,
     },
     {
-      path: '/editUser/:id',
+      path: '/edit-user/:id',
       name: 'EditUserDetails',
       component: EditUserDetails,
     },
