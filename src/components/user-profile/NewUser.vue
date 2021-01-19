@@ -30,7 +30,7 @@
 //       users {
 //         data {
 //           id
-//           name
+//           username
 //           body
 //         }
 //       }
@@ -40,25 +40,25 @@ export default {
   name: 'NewUser',
   data() {
     return {
-      posts:[],
-      newPost:{
-        title: '',
+      users:[],
+      newUser:{
+        username: '',
         body: ''
       },
-      // getPostByIdQuery: `
+      // getUserByIdQuery: `
       //   query {
-      //     post(id: 1) {
+      //     user(id: 1) {
       //       id
-      //       title
-      //       body
+      //       username
+      //       createdAt
       //     }
       //   }`,
-      // updatePostMutation: `
-      //   mutation ($id: ID!, $input: UpdatePostInput!) {
-      //     updatePost(id: $id, input: $input) {
+      // updateUserMutation: `
+      //   mutation ($id: ID!, $input: UpdateUserInput!) {
+      //     updateUser(id: $id, input: $input) {
       //       id
-      //       title
-      //       body
+      //       username
+      //       createdAt
       //     }
       //   }`
     }
@@ -69,23 +69,23 @@ export default {
   //   }
   // },
   // methods: {
-  //   async createPost () {
+  //   async createUser() {
   //     return await this.$apollo.mutate({
-  //       mutation: ADD_POST_MUTATION,
+  //       mutation: ADD_USER_MUTATION,
   //       variables: {
   //         input: {
-  //           title: this.newPost.title,
-  //           body: this.newPost.body,
+  //           title: this.newUser.title,
+  //           body: this.newUser.body,
   //         }
   //       },
-  //       update: (store, { data: { createPost } }) => {
+  //       update: (store, { data: { createUser } }) => {
   //         // read data from cache for this query
-  //         const data = store.readQuery({query: ALL_POSTS_QUERY})
-  //         console.log("Data.posts", data.posts.data)
+  //         const data = store.readQuery({query: ALL_USERS_QUERY})
+  //         console.log("Data.users", data.users.data)
   //         // add new post from the mutation to existing posts
-  //         data.posts.data.push(createPost)
+  //         data.users.data.push(createUser)
   //         // write data back to the cache
-  //         store.writeQuery({query: ALL_POSTS_QUERY, data})
+  //         store.writeQuery({query: ALL_USERS_QUERY, data})
   //       }
   //     }).then(response => {
   //       this.$router.replace('/')
@@ -93,25 +93,25 @@ export default {
   //       console.log(this.id)
   //     })
   //   },
-  //   async getPost() {
+  //   async getUser() {
   //     let {data} = await this.$apollo.query({
-  //       query: gql`${this.getPostByIdQuery}`,
+  //       query: gql`${this.getUserByIdQuery}`,
   //       variables:{
   //         id:this.$route.query.edit
   //       }
   //     })
   //     console.log("Data:", data);
-  //     this.newPost=data.post
-  //     console.log(data.post)
+  //     this.newUser=data.user
+  //     console.log(data.user)
   //   },
-  //   updatePost(){
+  //   updateUser(){
   //     this.$apollo.mutate({
-  //       mutation: gql`${this.updatePostMutation}`,
+  //       mutation: gql`${this.updateUserMutation}`,
   //       variables: {
   //         id: this.$route.query.edit,
   //         input: {
-  //           title: this.newPost.title,
-  //           body: this.newPost.body
+  //           title: this.newUser.title,
+  //           body: this.newUser.body
   //         }
   //       }
   //     });
@@ -120,7 +120,7 @@ export default {
   // },
   // created(){
   //   if(this.editMode) {
-  //     this.getPost();
+  //     this.getUser();
   //   }
   // }
 }
