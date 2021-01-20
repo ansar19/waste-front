@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import SitesTable from '@/components/SitesTable';
+import SitesTable from '@/components/sites/SitesTable';
 
 export default {
   data() {
