@@ -1,28 +1,55 @@
 <template>
-  <div class="users">
-    <h3>Пользователи :</h3>
-    <vue-good-table
-      :columns="column"
-      :rows="rows"
-      compactMode
-      @on-row-click="onRowClick"
-    >
-      <template slot="table-row" slot-scope="props">
-        <span v-if="props.column.field=='action'">
-          <router-link :to="{ path: '/edit-user/'+row.id}"><button class="btn btn-success mr-2"><i class="fa fa-edit"></i></button></router-link>
-          <router-link :to="{ path: '/show-user/'+row.id}" ><button class="btn btn-info mr-2"><i class="fa fa-eye"></i></button></router-link>
-          <button class="btn btn-danger mr-2"><i class="fa fa-trash"></i></button>
-        </span>
-      </template>
-      <div slot="table-actions">
-        <router-link to="/new-user"><button class="btn btn-outline-primary btn-mx mr-2">Добавить</button></router-link>
+  <div class="main-content-container container-fluid px-4">
+    <!-- Page Header -->
+    <div class="page-header row no-gutters py-4">
+      <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
+        <span class="text-uppercase page-subtitle"> Список пользователей</span>
+        <h3 class="page-title">Пользователи:</h3>
       </div>
-    </vue-good-table>
+    </div>
+    <!-- Default Light Table -->
+    <div class="row">
+      <div class="col">
+        <div class="card card-small mb-4">
+          <div class="card-body">
+            <vue-good-table
+              :columns="column"
+              :rows="rows"
+              compactMode
+              @on-row-click="onRowClick"
+            >
+              <template slot="table-row" slot-scope="props">
+                <span v-if="props.column.field == 'action'">
+                  <router-link :to="{ path: '/edit-user/' + row.id }"
+                    ><button class="btn btn-success mr-2">
+                      <i class="fa fa-edit"></i></button
+                  ></router-link>
+                  <router-link :to="{ path: '/show-user/' + row.id }"
+                    ><button class="btn btn-info mr-2">
+                      <i class="fa fa-eye"></i></button
+                  ></router-link>
+                  <button class="btn btn-danger mr-2">
+                    <i class="fa fa-trash"></i>
+                  </button>
+                </span>
+              </template>
+              <div slot="table-actions">
+                <router-link to="/new-user"
+                  ><button class="btn btn-outline-primary btn-mx mr-2">
+                    Добавить
+                  </button></router-link
+                >
+              </div>
+            </vue-good-table>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import 'vue-good-table/dist/vue-good-table.css'
+import 'vue-good-table/dist/vue-good-table.css';
 import { VueGoodTable } from 'vue-good-table';
 
 export default {
@@ -49,55 +76,62 @@ export default {
       rows: [
         {
           id: 1,
-          name: "Иван Иванов",
-          createdAt: '2011-10-22',},
+          name: 'Иван Иванов',
+          createdAt: '2011-10-22',
+        },
         {
           id: 2,
-          name: "Андрей Богданчиков",
-          createdAt: '2011-10-31',},
+          name: 'Андрей Богданчиков',
+          createdAt: '2011-10-31',
+        },
         {
           id: 3,
-          name: "Алексей Кавокин",
-          createdAt: '2011-10-30',},
+          name: 'Алексей Кавокин',
+          createdAt: '2011-10-30',
+        },
         {
           id: 4,
-          name: "Кристофер Мур",
-          createdAt: '2011-10-11',},
+          name: 'Кристофер Мур',
+          createdAt: '2011-10-11',
+        },
         {
           id: 5,
-          name: "Александр Иванов",
-          createdAt: '2011-10-21',},
+          name: 'Александр Иванов',
+          createdAt: '2011-10-21',
+        },
         {
           id: 6,
-          name: "Константин Латута",
+          name: 'Константин Латута',
           createdAt: '2011-10-31',
         },
         {
           id: 7,
-          name: "Нурсултан Назарбаев",
-          createdAt: '2013-09-21',},
+          name: 'Нурсултан Назарбаев',
+          createdAt: '2013-09-21',
+        },
       ],
     };
   },
   methods: {
     onRowClick(params) {
       this.row = params.row;
-      console.log(this.row)
-    }
+      console.log(this.row);
+    },
   },
 
   components: {
     // eslint-disable-next-line vue/no-unused-components
-    VueGoodTable
-  }
-}
+    VueGoodTable,
+  },
+};
 </script>
 
 <style scoped>
- .users{
-   width: 90%;
-   margin: auto;
- }
- .vgt{text-align:center}
-
+.users {
+  width: 90%;
+  margin: auto;
+}
+.vgt {
+  text-align: center;
+}
 </style>
