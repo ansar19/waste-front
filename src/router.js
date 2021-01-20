@@ -7,6 +7,7 @@ import Users from './views/Users.vue';
 import ShowUser from "./components/user/ShowUser.vue";
 import EditUser from "./components/user/EditUser.vue";
 import NewUser from "./components/user/NewUser.vue";
+import Sites from './views/Sites.vue';
 import History from './views/History.vue';
 import NewRecord from './components/log-book/NewRecord.vue';
 import Utilizers from './views/Utilizers.vue';
@@ -65,6 +66,26 @@ export default new Router({
       path: '/edit-user/:id',
       name: 'EditUser',
       component: EditUser,
+    },
+    {
+      path: '/sites',
+      name: 'Sites',
+      component: Sites
+    },
+    {
+      path: '/new-site',
+      name: 'NewSite',
+      component: () => import(/* webpackChunkName: "" */ './components/NewSite.vue')
+    },
+    {
+      path: '/edit-site',
+      name: 'EditSite',
+      component: () => import(/* webpackChunkName: "" */ './components/EditSite.vue')
+    },
+    {
+      path: '/show-site',
+      name: 'ShowSite',
+      component: () => import(/* webpackChunkName: "" */ './components/ShowSite.vue')
     },
     {
       path: '/utilizers',
