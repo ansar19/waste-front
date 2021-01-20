@@ -30,16 +30,16 @@
       <template slot="table-row" slot-scope="props">
         <span v-if="props.column.field == 'action'">
           <router-link to="/add-new-record">
-            <button class="btn-primary btn-small btn">
+            <button class="btn-primary btn-small btn mr-2">
               <i class="material-icons">open_in_new</i>
             </button>
           </router-link>
           <router-link to="/add-new-record">
-            <button class="btn-info btn-small btn">
+            <button class="btn-info btn-small btn mr-2">
               <i class="material-icons">visibility</i>
             </button>
           </router-link>
-          <button class="btn-danger btn-small btn">
+          <button class="btn-danger btn-small btn mr-2">
             <i class="material-icons">delete</i>
           </button>
         </span>
