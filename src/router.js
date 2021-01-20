@@ -2,7 +2,6 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import PersonalBlog from './views/PersonalBlog.vue';
-import UserProfileLite from './views/UserProfileLite.vue';
 import Errors from './views/Errors.vue';
 import Users from './views/Users.vue';
 import ShowUser from "./components/user/ShowUser.vue";

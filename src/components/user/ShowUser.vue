@@ -1,55 +1,76 @@
 <template>
-  <div class="container">
-    <div class="card">
-      <div class="card-body">
-        <div class="d-flex flex-column align-items-center text-center">
-          <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150">
-          <div class="mt-3">
-            <h4>{{user.name}}</h4>
-            <p class="text-secondary mb-1">Директор</p>
-            <p class="text-muted font-size-sm">{{user.createdAt}}</p>
-            <router-link to="/users"><button class="btn btn-outline-primary">Назад</button></router-link>
+  <d-container fluid class="main-content-container px-4 pb-4">
+    <d-row no-gutters class="page-header py-4">
+      <d-col lg="12" md="12">
+        <div class="card card-small mb-4 pt-3">
+          <div class="card-header border-bottom text-center">
+            <div class="mb-3 mx-auto"></div>
+            <!-- vertical table head example -->
+            <table class="table table-bordered" style="width: 100%">
+              <tr>
+                <th class="text-left">Фамилия:</th>
+                <td>{{ user.surname }}</td>
+              </tr>
+              <tr>
+                <th class="text-left">Имя:</th>
+                <td>{{ user.name }}</td>
+              </tr>
+              <tr>
+                <th class="text-left">Отчество:</th>
+                <td>{{ user.middle_name }}</td>
+              </tr>
+              <tr>
+                <th class="text-left">Должность:</th>
+                <td>{{ user.position }}</td>
+              </tr>
+              <!-- <tr>
+          <th class="text-left">Email:</th>
+          <td>{{ u.email }}</td>
+        </tr>
+        <tr>
+          <th class="text-left">Телефон:</th>
+          <td>{{ u.phone }}</td>
+        </tr>
+        <tr>
+          <th class="text-left">Должность:</th>
+          <td>{{ u.position }}</td>
+        </tr>
+        <tr>
+          <th class="text-left">Био:</th>
+          <td>{{ u.bio }}</td>
+        </tr> -->
+            </table>
+          </div>
+          <div class="card-footer text-muted">
+            <d-button @click="goBack()" pill>
+              <a class="text-white"> &larr; Вернуться назад </a>
+            </d-button>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
+      </d-col>
+    </d-row>
+  </d-container>
 </template>
 
 <script>
 export default {
-  name: "ShowUser",
-  data(){
+  name: 'ShowUser',
+  data() {
     return {
-      user:{
+      user: {
         id: 1,
-        name: 'Иван Иванов',
-        createdAt: '2011-10-22'
-      }
-    }
-  }
-}
+        name: 'Иван',
+        surname: 'Иванович',
+        middle_name: 'Петрович',
+        position: 'Бригадир',
+        createdAt: '2011-10-22',
+      },
+    };
+  },
+  methods: {
+    goBack() {
+      this.$router.go(-1);
+    },
+  },
+};
 </script>
-
-<style scoped>
-.card {
-  box-shadow: 0 1px 3px 0 rgba(0,0,0,.1), 0 1px 2px 0 rgba(0,0,0,.06);
-}
-.card {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  min-width: 0;
-  word-wrap: break-word;
-  background-color: #fff;
-  background-clip: border-box;
-  border: 0 solid rgba(0,0,0,.125);
-  border-radius: .25rem;
-}
-
-.card-body {
-  flex: 1 1 auto;
-  min-height: 1px;
-  padding: 1rem;
-}
-</style>
