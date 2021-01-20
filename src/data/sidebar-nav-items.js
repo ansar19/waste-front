@@ -19,13 +19,6 @@ export default function () {
       name: 'history',
     },
   }, {
-    title: 'Errors',
-    htmlBefore: '<i class="material-icons">error</i>',
-    to: {
-      name: 'errors',
-    },
-  },
-  {
     title: 'Utilizers',
     htmlBefore: '<i class="material-icons">table_chart</i>',
     to: {

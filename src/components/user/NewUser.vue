@@ -41,7 +41,6 @@
     </d-row>
   </d-container>
 </template>
-</template>
 
 <script>
 export default {

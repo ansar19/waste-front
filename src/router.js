@@ -2,7 +2,6 @@ import Vue from 'vue';
 import Router from 'vue-router';
 
 import PersonalBlog from './views/PersonalBlog.vue';
-import Errors from './views/Errors.vue';
 import Users from './views/Users.vue';
 import ShowUser from "./components/user/ShowUser.vue";
 import EditUser from "./components/user/EditUser.vue";
@@ -37,15 +36,15 @@ export default new Router({
       component: PersonalBlog,
     },
     {
+      path: '/profile',
+      name: 'Profile',
+      component: () => import(/* webpackChunkName: "" */ './views/Profile.vue')
+    },
+    {
       path: '/add-new-record',
       name: 'add-new-record',
       component: NewRecord,
 
-    },
-    {
-      path: '/errors',
-      name: 'errors',
-      component: Errors,
     },
     {
       path: '/users',
@@ -113,7 +112,8 @@ export default new Router({
       component: History,
     }, {
       path: '*',
-      redirect: '/errors',
+      meta: {layout: 'default', auth: false},
+      component: () => import('./views/Errors.vue')
     },
   ],
 });

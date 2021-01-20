@@ -1,5 +1,6 @@
 /* eslint-disable */
 import Vue from 'vue';
+import Vuex from 'vuex'
 import ShardsVue from 'shards-vue';
 
 // Styles
@@ -12,11 +13,15 @@ import '@/assets/scss/meta-table.scss';
 // Core
 import App from './App.vue';
 import router from './router';
+import store from './store'
 
 import vSelect from 'vue-select';
 
 // Layouts
 import Default from '@/layouts/Default.vue';
+
+
+Vue.use(Vuex);
 
 ShardsVue.install(Vue);
 
@@ -38,5 +43,6 @@ Vue.prototype.$eventHub = new Vue();
 
 new Vue({
   router,
+  store,
   render: h => h(App),
 }).$mount('#app');

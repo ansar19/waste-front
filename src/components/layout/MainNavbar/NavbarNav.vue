@@ -47,8 +47,10 @@
       </a>
       <d-collapse id="user-actions" class="dropdown-menu dropdown-menu-small">
         <d-dropdown-item
-          ><i class="material-icons">&#xE7FD;</i> Profile</d-dropdown-item
-        >
+          ><router-link to="/profile">
+            <i class="material-icons">&#xE7FD;</i> Профиль
+          </router-link>
+        </d-dropdown-item>
         <d-dropdown-item
           ><i class="material-icons">&#xE8B8;</i> Edit Profile</d-dropdown-item
         >
