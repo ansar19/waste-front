@@ -75,17 +75,17 @@ export default new Router({
     {
       path: '/new-site',
       name: 'NewSite',
-      component: () => import(/* webpackChunkName: "" */ './components/NewSite.vue')
+      component: () => import(/* webpackChunkName: "" */ './components/sites/NewSite.vue')
     },
     {
       path: '/edit-site',
       name: 'EditSite',
-      component: () => import(/* webpackChunkName: "" */ './components/EditSite.vue')
+      component: () => import(/* webpackChunkName: "" */ './components/sites/EditSite.vue')
     },
     {
       path: '/show-site',
       name: 'ShowSite',
-      component: () => import(/* webpackChunkName: "" */ './components/ShowSite.vue')
+      component: () => import(/* webpackChunkName: "" */ './components/sites/ShowSite.vue')
     },
     {
       path: '/utilizers',
