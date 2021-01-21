@@ -1,64 +1,57 @@
 <template>
-  <d-container fluid class="main-content-container px-4 pb-4">
-    <d-row no-gutters class="page-header py-4">
-      <d-col lg="12" md="12">
-        <d-card class="card-small">
-          <!-- Form Example -->
-          <d-card-header class="border-bottom">
-            <h6 class="m-0">Редактировать пользователя</h6>
-          </d-card-header>
+  <div class="container-fluid px-4 pb-4">
+    <div class="row">
+      <div class="col-12 md-12">
+        <div class="card-small">
+          <div class="card-header border-bottom">
+            <h5 class="m-0">Переименовать</h5>
+          </div>
 
-          <d-list-group flush>
-            <d-list-group-item class="p-3">
-              <d-row>
-                <d-col>
-                  <d-form>
-                    <div class="form-group">
-                      <label>Имя:</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="username"
-                        placeholder="Иван Иванов"
-                      />
-                    </div>
-                    <div class="form-group">
-                      <label>Должность:</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="role"
-                        placeholder="Директор"
-                      />
-                    </div>
-                    <button type="submit" class="btn btn-success">
-                      Сохранить
-                    </button>
-                  </d-form>
-                </d-col>
-              </d-row>
-            </d-list-group-item>
-          </d-list-group>
-        </d-card>
-      </d-col>
-    </d-row>
-  </d-container>
+          <div class="row ">
+            <div class="col ">
+              <div class="form m-3">
+                <div class="form-group">
+                  <label for="user-name">Имя пользователя: </label>
+                  <input id="user-name" class="form-control" placeholder="" v-model="userName"/>
+                </div>
+
+                <div class="form-group">
+                  <label for="user-comments">Должность :</label>
+                  <input type="text" id="user-comments" class="form-control" placeholder="" v-model="userComments"/>
+                </div>
+              </div>
+              <div class="card-footer text-muted">
+                <div>
+                  <div class="d-flex">
+                    <button @click="goBack" class="btn btn-outline">Отменить</button>
+                    <button class="btn btn-success ml-auto" type="submit">Сохранить</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
+
 <script>
 export default {
   name: 'EditUser',
   data() {
     return {
-      username: 'Иван Иванов',
-      role: 'Директор',
+      userName: 'Иван Иванов',
+      userComments: 'Директор',
     };
+  },
+  methods: {
+    goBack() {
+      this.$router.go(-1);
+    },
   },
 };
 </script>
-
 <style scoped>
-.container {
-  margin: auto;
-  width: 50%;
-}
+
 </style>

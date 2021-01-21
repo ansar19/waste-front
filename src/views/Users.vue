@@ -18,7 +18,7 @@
 </template>
 
 <script>
-import UsersTable from '@/components/user/UsersTable';
+import UsersTable from './components/user/UsersTable';
 
 export default {
   data() {
