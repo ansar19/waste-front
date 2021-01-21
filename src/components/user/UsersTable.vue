@@ -4,7 +4,7 @@
         :columns="columns"
         :rows="rows"
         compactMode
-        styleClass="vgt-table condensed text-align-center"
+        styleClass="vgt-table condensed"
         :search-options="{
         enabled: true,
         placeholder: 'Введите текст для поиска',
