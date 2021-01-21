@@ -18,12 +18,11 @@
 </template>
 
 <script>
-import UsersTable from "@/components/UsersTable";
+import UsersTable from '@/components/user/UsersTable';
 
 export default {
   data() {
-    return {
-    };
+    return {};
   },
   components: {
     UsersTable,
@@ -32,5 +31,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

@@ -52,9 +52,10 @@ export default new Router({
       component: Users,
     },
     {
-      path: '/show-user/:id',
+      path: '/show-user/',
       name: 'ShowUser',
       component: ShowUser,
+      component: () => import('./components/user/ShowUser.vue')
     },
     {
       path: '/new-user',
