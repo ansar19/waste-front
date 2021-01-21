@@ -1,57 +1,62 @@
 <template>
-  <div class="container-fluid px-4 pb-4">
-    <div class="row">
-      <div class="col-12 md-12">
-        <div class="card-small">
-          <div class="card-header border-bottom">
-            <h5 class="m-0">Изменить : </h5>
-          </div>
+  <d-container fluid class="main-content-container px-4 pb-4">
+    <d-row no-gutters class="page-header py-4">
+      <d-col lg="12" md="12">
+        <d-card class="card-small">
+          <!-- Form Example -->
+          <d-card-header class="border-bottom">
+            <h6 class="m-0">Редактировать участки</h6>
+          </d-card-header>
 
-          <div class="row ">
-            <div class="col ">
-              <div class="form m-3">
-                <div class="form-group">
-                  <label for="site-name">Название участка : </label>
-                  <input id="site-name" class="form-control" placeholder="Введите название участка" v-model="siteName"/>
-                </div>
+          <d-list-group flush>
+            <d-list-group-item class="p-3">
+              <d-row>
+                <d-col>
+                  <d-form>
+                    <div class="form-group">
+                      <label for="site-name"
+                        >Наименование участка: </label
+                      >
+                      <d-input
+                        id="site-name"
+                        placeholder="Введите название участка"
+                        v-model="siteName"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="site-comments"
+                        >Комментарии: </label
+                      >
+                      <d-input
+                        id="site-comments"
+                        placeholder="Введите комментарии"
+                        v-model="siteComments"
+                      />
+                    </div>
 
-                <div class="form-group">
-                  <label for="site-comments">Коментарии : </label>
-                  <input type="text" id="site-comments" class="form-control" placeholder="Введите комментарии" v-model="siteComments"/>
-                </div>
-              </div>
-              <div class="card-footer text-muted">
-                <div>
-                  <div class="d-flex">
-                    <button @click="goBack" class="btn btn-outline">Отменить</button>
-                    <button class="btn btn-success ml-auto" type="submit">Сохранить</button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+                   
+
+                    <button type="button" class="btn btn-outline-success">
+                      Сохранить
+                    </button>
+                  </d-form>
+                </d-col>
+              </d-row>
+            </d-list-group-item>
+          </d-list-group>
+        </d-card>
+      </d-col>
+    </d-row>
+  </d-container>
 </template>
 
 <script>
 export default {
-  name: 'NewSite',
   data() {
     return {
       siteName: 'Казахстан',
-      siteComments: 'Мангистау',
+      siteComments: 'цупролдсмитьб',
     };
-  },
-  methods: {
-    goBack() {
-      this.$router.go(-1);
-    },
   },
 };
 </script>
-<style scoped>
-
-</style>
