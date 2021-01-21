@@ -1,48 +1,72 @@
 <template>
-  <div class="container-fluid px-4 pb-4">
-    <div class="row">
-      <div class="col-12 md-12">
-        <div class="card-small">
-          <div class="card-header border-bottom">
-            <h5 class="m-0">Новый пользователь : </h5>
-          </div>
+  <d-container fluid class="main-content-container px-4 pb-4">
+    <d-row no-gutters class="page-header py-4">
+      <d-col lg="12" md="12">
+        <d-card class="card-small">
+          <!-- Form Example -->
+          <d-card-header class="border-bottom">
+            <h6 class="m-0">Новый пользователь</h6>
+          </d-card-header>
 
-              <div class="row ">
-                <div class="col ">
-                  <div class="form m-3">
+          <d-list-group flush>
+            <d-list-group-item class="p-3">
+              <d-row>
+                <d-col>
+                  <d-form>
                     <div class="form-group">
-                      <label for="user-name">Имя пользователя: </label>
-                      <input id="user-name" class="form-control" placeholder="Иван Иванов" v-model="userName"/>
+                      <label for="user-name"
+                        >Имя пользователя: </label
+                      >
+                      <d-input
+                        id="user-name"
+                        placeholder="Иван Иванов"
+                        v-model="userName"
+                      />
+                    </div>
+                    <div class="form-group">
+                      <label for="created-at"
+                        >Зарегистрирован: </label
+                      >
+                      <d-input
+                        id="created-at"
+                        placeholder="2011-01-01"
+                        v-model="createdAt"
+                      />
                     </div>
 
-                    <div class="form-group">
-                      <label for="user-comments">Должность : </label>
-                      <input type="text" id="user-comments" class="form-control" placeholder="Директор" v-model="userComments"/>
+                    
+
+                    <div class="card-footer text-muted">
+                      <d-card-footer>
+                        <div class="d-flex">
+                          <a href="#" @click="goBack()" class="stretched-link"
+                            >Отменить</a
+                          >
+                          <d-button
+                            class="btn btn-success ml-auto"
+                            type="submit"
+                            >Сохранить</d-button
+                          >
+                        </div>
+                      </d-card-footer>
                     </div>
-                  </div>
-                  <div class="card-footer text-muted">
-                    <div>
-                      <div class="d-flex">
-                        <button @click="goBack" class="btn btn-outline">Отменить</button>
-                        <button class="btn btn-success ml-auto" type="submit">Сохранить</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-        </div>
-      </div>
-    </div>
-  </div>
+                  </d-form>
+                </d-col>
+              </d-row>
+            </d-list-group-item>
+          </d-list-group>
+        </d-card>
+      </d-col>
+    </d-row>
+  </d-container>
 </template>
 
 <script>
 export default {
-  name: 'NewUser',
   data() {
     return {
       userName: '',
-      userComments: '',
+      createdAt: '',
     };
   },
   methods: {
@@ -52,8 +76,3 @@ export default {
   },
 };
 </script>
-<style scoped>
-ul {
-  list-style: none;
-}
-</style>
