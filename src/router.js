@@ -54,7 +54,6 @@ export default new Router({
     {
       path: '/show-user/',
       name: 'ShowUser',
-      component: ShowUser,
       component: () => import('./components/user/ShowUser.vue')
     },
     {
