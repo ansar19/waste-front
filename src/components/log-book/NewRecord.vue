@@ -5,7 +5,7 @@
         <d-card class="card-small">
           <!-- Form Example -->
           <d-card-header class="border-bottom">
-            <h6 class="m-0">Form Example</h6>
+            <h6 class="m-0">Новая запись</h6>
           </d-card-header>
 
           <d-list-group flush>
@@ -296,19 +296,6 @@
                         >{{ "Message_EnterDescription" | localize }}</span
                       > -->
                     </div>
-
-                    <!-- vue - select -->
-                    <div class="form-group">
-                      <label for="v-select">Vue - select</label>
-                      <v-select
-                        id="v-select"
-                        label="countryName"
-                        v-model="countryName"
-                        :options="countriesOptions"
-                      ></v-select>
-                      {{ countryName }}
-                    </div>
-                    <!-- / vue - select -->
                     <button type="button" class="btn btn-outline-success">
                       Сохранить
                     </button>
@@ -537,17 +524,6 @@ export default {
         {
           text: 'Размещение на собственном полигоне ТБО',
           value: 'disposalAtOwnSolidDomesticLlandfill',
-        },
-      ],
-      countryName: '',
-      countriesOptions: [
-        {
-          countryCode: 'CA',
-          countryName: 'Canada',
-        },
-        {
-          countryCode: 'US',
-          countryName: 'USA',
         },
       ],
     };

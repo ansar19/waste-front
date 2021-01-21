@@ -34,7 +34,7 @@
               <i class="material-icons">open_in_new</i>
             </button>
           </router-link>
-          <router-link to="/add-new-record">
+          <router-link to="/show-record">
             <button class="btn-info btn-small btn mr-2">
               <i class="material-icons">visibility</i>
             </button>

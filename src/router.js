@@ -47,6 +47,11 @@ export default new Router({
 
     },
     {
+      path: '/show-record',
+      name: 'ShowRecord',
+      component: () => import('./components/log-book/ShowRecord.vue')
+    },
+    {
       path: '/users',
       name: 'users',
       component: Users,
