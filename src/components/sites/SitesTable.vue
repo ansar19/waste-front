@@ -55,15 +55,15 @@ export default {
     return {
       columns:[
         {
-          label: 'SiteName',
+          label: 'Наименование участка',
           field: 'siteName',
         },
         {
-          label: 'SiteComments',
+          label: 'Комментарии',
           field: 'siteComments',
         },
         {
-          label: 'Action',
+          label: 'Действия',
           field: 'action',
         },
       ],
