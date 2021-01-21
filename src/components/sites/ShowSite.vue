@@ -1,16 +1,16 @@
 <template>
-  <div class="container-fluid px-4 pb-4">
-    <div class="row py-4">
-      <div class="col-12" lg="12" md="12">
+  <d-container fluid class="main-content-container px-4 pb-4">
+    <d-row no-gutters class="page-header py-4">
+      <d-col lg="12" md="12">
         <div class="card card-small mb-4 pt-3">
           <div class="card-header border-bottom text-center">
             <div class="mb-3 mx-auto"></div>
             <!-- vertical table head example -->
             <table
-                v-for="(s, index) in sites"
-                :key="index"
-                class="table table-bordered"
-                style="width: 100%"
+              v-for="(s, index) in sites"
+              :key="index"
+              class="table table-bordered"
+              style="width: 100%"
             >
               <tr>
                 <th class="text-left">Наименование участка:</th>
@@ -23,25 +23,25 @@
             </table>
           </div>
           <div class="card-footer text-muted">
-            <button class="btn btn-secondary" @click="goBack()" pill>
+            <d-button @click="goBack()" pill>
               <a class="text-white"> &larr; Вернуться назад </a>
-            </button>
+            </d-button>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
+      </d-col>
+    </d-row>
+  </d-container>
 </template>
 
 <script>
 export default {
-  name: 'ShowSite',
+  name: 'show-site',
   data() {
     return {
       sites: [
         {
-          siteName: 'Kazakhstan',
-          siteComments: 'qwetyuiasdfghjkzxcvbnm',
+          siteName: 'Казахстан',
+          siteComments: 'йцукенглджсмг'
         },
       ],
     };
@@ -53,7 +53,3 @@ export default {
   },
 };
 </script>
-
-<style scoped>
-
-</style>
