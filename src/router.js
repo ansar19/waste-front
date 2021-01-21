@@ -57,9 +57,9 @@ export default new Router({
       component: Users,
     },
     {
-      path: '/show-user/',
+      path: '/show-user',
       name: 'ShowUser',
-      component: () => import('./components/user/ShowUser.vue')
+      component: ShowUser,
     },
     {
       path: '/new-user',
@@ -67,7 +67,7 @@ export default new Router({
       component: NewUser,
     },
     {
-      path: '/edit-user/:id',
+      path: '/edit-user',
       name: 'EditUser',
       component: EditUser,
     },
