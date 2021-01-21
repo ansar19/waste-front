@@ -3,9 +3,6 @@ import Router from 'vue-router';
 
 import PersonalBlog from './views/PersonalBlog.vue';
 import Users from './views/Users.vue';
-import ShowUser from "./components/user/ShowUser.vue";
-import EditUser from "./components/user/EditUser.vue";
-import NewUser from "./components/user/NewUser.vue";
 import Sites from './views/Sites.vue';
 import History from './views/History.vue';
 import NewRecord from './components/log-book/NewRecord.vue';
@@ -57,19 +54,19 @@ export default new Router({
       component: Users,
     },
     {
-      path: '/show-user',
+      path: '/show-user/',
       name: 'ShowUser',
-      component: ShowUser,
+      component: () => import('./components/user/ShowUser.vue')
     },
     {
-      path: '/new-user',
-      name: 'NewUser',
-      component: NewUser,
-    },
-    {
-      path: '/edit-user',
+      path: '/edit-user/',
       name: 'EditUser',
-      component: EditUser,
+      component: () => import('./components/user/EditUser.vue')
+    },
+    {
+      path: '/new-user/',
+      name: 'NewUser',
+      component: () => import('./components/user/NewUser.vue')
     },
     {
       path: '/sites',
