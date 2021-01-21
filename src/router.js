@@ -3,11 +3,6 @@ import Router from 'vue-router';
 
 import PersonalBlog from './views/PersonalBlog.vue';
 import Users from './views/Users.vue';
-<<<<<<< HEAD
-import EditUser from "./components/user/EditUser.vue";
-import NewUser from "./components/user/NewUser.vue";
-=======
->>>>>>> 47380f059db7f5addc0537a99c717e4ad6d319b8
 import Sites from './views/Sites.vue';
 import History from './views/History.vue';
 import NewRecord from './components/log-book/NewRecord.vue';
