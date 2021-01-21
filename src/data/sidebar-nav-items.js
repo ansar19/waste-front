@@ -7,6 +7,12 @@ export default function () {
     htmlBefore: '<i class="material-icons">edit</i>',
     htmlAfter: '',
   }, {
+    title: 'Limits',
+    htmlBefore: '<i class="material-icons">trending_up</i>',
+    to: {
+      name: 'limits',
+    },
+  }, {
     title: 'Users',
     htmlBefore: '<i class="material-icons">person</i>',
     to: {

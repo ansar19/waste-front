@@ -3,7 +3,6 @@ import Router from 'vue-router';
 
 import PersonalBlog from './views/PersonalBlog.vue';
 import Users from './views/Users.vue';
-import ShowUser from "./components/user/ShowUser.vue";
 import EditUser from "./components/user/EditUser.vue";
 import NewUser from "./components/user/NewUser.vue";
 import Sites from './views/Sites.vue';
@@ -13,6 +12,8 @@ import Utilizers from './views/Utilizers.vue';
 import ShowUtilizer from './components/utilizer/ShowUtilizer.vue';
 import NewUtilizer from './components/utilizer/NewUtilizer.vue';
 import EditUtilizer from './components/utilizer/EditUtilizer.vue';
+
+import Limits from './views/Limits.vue';
 
 
 Vue.use(Router);
@@ -34,6 +35,11 @@ export default new Router({
       path: '/system-overview',
       name: 'system-overview',
       component: PersonalBlog,
+    },
+    {
+      path: '/limits',
+      name: 'limits',
+      component: Limits,
     },
     {
       path: '/profile',
