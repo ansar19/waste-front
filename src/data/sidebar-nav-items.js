@@ -4,7 +4,7 @@ export default function () {
     to: {
       name: 'system-overview',
     },
-    htmlBefore: '<i class="material-icons">edit</i>',
+    htmlBefore: '<i class="material-icons">dashboard</i>',
     htmlAfter: '',
   }, {
     title: 'Лимиты',
@@ -20,7 +20,7 @@ export default function () {
     },
   }, {
     title: 'Журнал',
-    htmlBefore: '<i class="material-icons">table_chart</i>',
+    htmlBefore: '<i class="material-icons">sticky_note_2</i>',
     to: {
       name: 'history',
     },
@@ -28,11 +28,17 @@ export default function () {
     title: 'Участки',
     htmlBefore: '<i class="material-icons"> home_work</i>',
     to: {
-      name: 'Sites',
+      name: 'sites',
+    }, 
+  }, {
+    title: 'Перевозчики',
+    htmlBefore: '<i class="material-icons"> local_shipping</i>',
+    to: {
+      name: 'transporters',
     }, 
   }, {
     title: 'Места утилизации',
-    htmlBefore: '<i class="material-icons">table_chart</i>',
+    htmlBefore: '<i class="material-icons">outlined_flag</i>',
     to: {
       name: 'utilizers',
     },

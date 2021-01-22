@@ -11,6 +11,8 @@ import ShowUtilizer from './components/utilizer/ShowUtilizer.vue';
 import NewUtilizer from './components/utilizer/NewUtilizer.vue';
 import EditUtilizer from './components/utilizer/EditUtilizer.vue';
 
+import Transporters from './views/Transporters.vue';
+
 import Limits from './views/Limits.vue';
 
 
@@ -77,7 +79,7 @@ export default new Router({
     },
     {
       path: '/sites',
-      name: 'Sites',
+      name: 'sites',
       component: Sites
     },
     {
@@ -114,6 +116,26 @@ export default new Router({
       path: '/edit-utilizer',
       name: 'edit-utilizer',
       component: EditUtilizer,
+    },
+    {
+      path: '/transporters',
+      name: 'transporters',
+      component: Transporters,
+    },
+    {
+      path: '/new-transporter/',
+      name: 'new-transporter',
+      component: () => import('./components/transporter/NewTransporter.vue')
+    },
+    {
+      path: '/show-transporter/',
+      name: 'show-transporter',
+      component: () => import('./components/transporter/ShowTransporter.vue')
+    },
+    {
+      path: '/edit-transporter/',
+      name: 'edit-transporter',
+      component: () => import('./components/transporter/EditTransporter.vue')
     },
     {
       path: '/history',
