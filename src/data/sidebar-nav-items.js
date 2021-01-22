@@ -42,5 +42,12 @@ export default function () {
     to: {
       name: 'utilizers',
     },
+  },
+  {
+    title: 'Конвертер',
+    htmlBefore: '<i class="material-icons">change_circle</i>',
+    to: {
+      name: 'utilizers',
+    },
   }];
 }
