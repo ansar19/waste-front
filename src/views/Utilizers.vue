@@ -3,10 +3,7 @@
     <!-- Page Header -->
     <div class="page-header row no-gutters py-4">
       <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
-        <span class="text-uppercase page-subtitle">
-          Список мест утилизации</span
-        >
-        <h3 class="page-title">Места утилизации</h3>
+        <span class="text-uppercase page-subtitle"> Места утилизации</span>
       </div>
     </div>
     <!-- Default Light Table -->

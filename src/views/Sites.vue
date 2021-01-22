@@ -3,10 +3,7 @@
     <!-- Page Header -->
     <div class="page-header row no-gutters py-4">
       <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
-        <span class="text-uppercase page-subtitle">
-          Список участков</span
-        >
-        <h3 class="page-title">Участки:</h3>
+        <span class="text-uppercase page-subtitle"> Участки</span>
       </div>
     </div>
     <!-- Default Light Table -->
@@ -27,8 +24,7 @@ import SitesTable from '@/components/sites/SitesTable';
 
 export default {
   data() {
-    return {
-    };
+    return {};
   },
   components: {
     SitesTable,
@@ -37,5 +33,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>
