@@ -1,19 +1,15 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 
-import PersonalBlog from './views/PersonalBlog.vue';
+import Dashboard from './views/Dashboard.vue';
+import Limits from './views/Limits.vue';
 import Users from './views/Users.vue';
-import Sites from './views/Sites.vue';
 import History from './views/History.vue';
 import NewRecord from './components/log-book/NewRecord.vue';
-import Utilizers from './views/Utilizers.vue';
-import ShowUtilizer from './components/utilizer/ShowUtilizer.vue';
-import NewUtilizer from './components/utilizer/NewUtilizer.vue';
-import EditUtilizer from './components/utilizer/EditUtilizer.vue';
 
+import Sites from './views/Sites.vue';
 import Transporters from './views/Transporters.vue';
-
-import Limits from './views/Limits.vue';
+import Utilizers from './views/Utilizers.vue';
 
 
 Vue.use(Router);
@@ -29,12 +25,12 @@ export default new Router({
   routes: [
     {
       path: '/',
-      redirect: '/system-overview',
+      redirect: '/dashboard',
     },
     {
-      path: '/system-overview',
-      name: 'system-overview',
-      component: PersonalBlog,
+      path: '/dashboard',
+      name: 'dashboard',
+      component: Dashboard,
     },
     {
       path: '/limits',
@@ -47,20 +43,14 @@ export default new Router({
       component: () => import(/* webpackChunkName: "" */ './views/Profile.vue')
     },
     {
-      path: '/add-new-record',
-      name: 'add-new-record',
-      component: NewRecord,
-
-    },
-    {
-      path: '/show-record',
-      name: 'ShowRecord',
-      component: () => import('./components/log-book/ShowRecord.vue')
-    },
-    {
       path: '/users',
       name: 'users',
       component: Users,
+    },
+    {
+      path: '/new-user/',
+      name: 'NewUser',
+      component: () => import('./components/user/NewUser.vue')
     },
     {
       path: '/show-user/',
@@ -73,9 +63,20 @@ export default new Router({
       component: () => import('./components/user/EditUser.vue')
     },
     {
-      path: '/new-user/',
-      name: 'NewUser',
-      component: () => import('./components/user/NewUser.vue')
+      path: '/history',
+      name: 'history',
+      component: History,
+    },
+    {
+      path: '/new-record',
+      name: 'new-record',
+      component: NewRecord,
+
+    },
+    {
+      path: '/show-record',
+      name: 'show-record',
+      component: () => import('./components/log-book/ShowRecord.vue')
     },
     {
       path: '/sites',
@@ -88,34 +89,14 @@ export default new Router({
       component: () => import(/* webpackChunkName: "" */ './components/sites/NewSite.vue')
     },
     {
-      path: '/edit-site',
-      name: 'EditSite',
-      component: () => import(/* webpackChunkName: "" */ './components/sites/EditSite.vue')
-    },
-    {
       path: '/show-site',
-      name: 'ShowSite',
+      name: 'show-site',
       component: () => import(/* webpackChunkName: "" */ './components/sites/ShowSite.vue')
     },
     {
-      path: '/utilizers',
-      name: 'utilizers',
-      component: Utilizers,
-    },
-    {
-      path: '/show-utilizer',
-      name: 'show-utilizer',
-      component: ShowUtilizer,
-    },
-    {
-      path: '/new-utilizer',
-      name: 'new-utilizer',
-      component: NewUtilizer,
-    },
-    {
-      path: '/edit-utilizer',
-      name: 'edit-utilizer',
-      component: EditUtilizer,
+      path: '/edit-site',
+      name: 'edit-site',
+      component: () => import(/* webpackChunkName: "" */ './components/sites/EditSite.vue')
     },
     {
       path: '/transporters',
@@ -138,10 +119,27 @@ export default new Router({
       component: () => import('./components/transporter/EditTransporter.vue')
     },
     {
-      path: '/history',
-      name: 'history',
-      component: History,
-    }, {
+      path: '/utilizers',
+      name: 'utilizers',
+      component: Utilizers,
+    },
+    {
+      path: '/new-utilizer',
+      name: 'new-utilizer',
+      component: () => import('./components/utilizer/NewUtilizer.vue')
+    },
+    {
+      path: '/show-utilizer',
+      name: 'show-utilizer',
+      component: () => import('./components/utilizer/ShowUtilizer.vue')
+    },
+    
+    {
+      path: '/edit-utilizer',
+      name: 'edit-utilizer',
+      component: () => import('./components/utilizer/EditUtilizer.vue')
+    },
+     {
       path: '*',
       meta: {layout: 'default', auth: false},
       component: () => import('./views/Errors.vue')

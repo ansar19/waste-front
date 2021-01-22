@@ -11,7 +11,7 @@
       :pagination-options="paginationOptions"
     >
       <div slot="table-actions">
-        <router-link to="/add-new-record">
+        <router-link to="/new-record">
           <button type="button" class="btn btn-outline-primary btn-sm mr-2">
             + Новая запись
           </button>
@@ -29,7 +29,7 @@
       </div>
       <template slot="table-row" slot-scope="props">
         <span v-if="props.column.field == 'action'">
-          <router-link to="/add-new-record">
+          <router-link to="/new-record">
             <button class="btn-primary btn-small btn mr-2">
               <i class="material-icons">open_in_new</i>
             </button>

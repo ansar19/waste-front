@@ -2,7 +2,7 @@ export default function () {
   return [{
     title: 'Главная',
     to: {
-      name: 'system-overview',
+      name: 'dashboard',
     },
     htmlBefore: '<i class="material-icons">dashboard</i>',
     htmlAfter: '',
