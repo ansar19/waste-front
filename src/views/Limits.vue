@@ -7,11 +7,7 @@
     </div>
     <div class="row">
       <div class="col">
-        <div class="card card-small mb-4">
-          <div class="card-body">
-            <LimitMass />
-          </div>
-        </div>
+        <LimitMass />
       </div>
     </div>
   </div>
