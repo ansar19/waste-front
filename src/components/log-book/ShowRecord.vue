@@ -41,10 +41,10 @@
               >Больше деталей в файле для выгрузки</strong
             >
           </div>
-          <div class="card-footer text-muted">
-            <d-button @click="goBack()" pill>
-              <a class="text-white"> &larr; Вернуться назад </a>
-            </d-button>
+          <div class="card-footer">
+            <div class="col text-left view-report">
+              <a @click="goBack()"> &larr; Вернуться назад </a>
+            </div>
           </div>
         </div>
       </d-col>

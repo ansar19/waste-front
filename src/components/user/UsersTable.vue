@@ -1,41 +1,40 @@
 <template>
   <div class="meta-table">
     <vue-good-table
-        :columns="columns"
-        :rows="rows"
-        compactMode
-        styleClass="vgt-table condensed"
-        :search-options="{
+      :columns="columns"
+      :rows="rows"
+      compactMode
+      styleClass="vgt-table condensed"
+      :search-options="{
         enabled: true,
         placeholder: 'Введите текст для поиска',
       }"
-        :pagination-options="paginationOptions"
+      :pagination-options="paginationOptions"
     >
       <div slot="table-actions">
         <router-link to="/new-user">
-          <button type="button" class="btn btn-secondary btn-sm mr-2">
-            + Добавить пользователь
+          <button type="button" class="btn btn-outline-primary btn-sm mr-2">
+            + Новый пользователь
           </button>
         </router-link>
 
-        <button class="btn btn-primary btn-sm mr-2">
+        <button class="btn btn-outline-primary btn-sm mr-2">
           <i class="fa fa-download"></i>
         </button>
-
       </div>
       <template slot="table-row" slot-scope="props">
         <span v-if="props.column.field == 'action'">
           <router-link to="/edit-user">
-            <button class="btn-success btn-small btn mr-2">
+            <button class="btn btn-primary btn-sm mr-2">
               <i class="fa fa-edit"></i>
             </button>
           </router-link>
           <router-link to="/show-user">
-            <button class="btn-info btn-small btn mr-2">
+            <button class="btn-info btn-sm btn mr-2">
               <i class="fa fa-eye"></i>
             </button>
           </router-link>
-          <button class="btn-danger btn-small btn mr-2">
+          <button class="btn btn-danger btn-sm mr-2">
             <i class="fa fa-trash"></i>
           </button>
         </span>
@@ -126,12 +125,12 @@ export default {
         pageLabel: 'стр.', // for 'pages' mode
         allLabel: 'Все',
       },
-    }
+    };
   },
   components: {
     VueGoodTable,
   },
-}
+};
 </script>
 
 <style scoped>

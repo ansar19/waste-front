@@ -36,15 +36,19 @@
                       {{ utilizeTypeName }}
                     </div>
                     <!-- / vue - select -->
-
-                    <button type="button" class="btn btn-outline-success">
-                      Сохранить
-                    </button>
                   </d-form>
                 </d-col>
               </d-row>
             </d-list-group-item>
           </d-list-group>
+          <d-card-footer class="border-top">
+            <div class="d-flex">
+              <router-link to="/utilizers">Отменить</router-link>
+              <button class="btn btn-success ml-auto" type="submit">
+                Сохранить
+              </button>
+            </div>
+          </d-card-footer>
         </d-card>
       </d-col>
     </d-row>

@@ -36,26 +36,19 @@
                       {{ utilizeTypeName }}
                     </div>
                     <!-- / vue - select -->
-
-                    <div class="card-footer text-muted">
-                      <d-card-footer>
-                        <div class="d-flex">
-                          <a href="#" @click="goBack()" class="stretched-link"
-                            >Отменить</a
-                          >
-                          <d-button
-                            class="btn btn-success ml-auto"
-                            type="submit"
-                            >Сохранить</d-button
-                          >
-                        </div>
-                      </d-card-footer>
-                    </div>
                   </d-form>
                 </d-col>
               </d-row>
             </d-list-group-item>
           </d-list-group>
+          <d-card-footer class="border-top">
+            <div class="d-flex">
+              <router-link to="/utilizers">Отменить</router-link>
+              <button class="btn btn-success ml-auto" type="submit">
+                Сохранить
+              </button>
+            </div>
+          </d-card-footer>
         </d-card>
       </d-col>
     </d-row>

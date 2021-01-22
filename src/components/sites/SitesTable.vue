@@ -1,28 +1,25 @@
 <template>
   <div class="meta-table">
     <vue-good-table
-        :columns="columns"
-        :rows="rows"
-        styleClass="vgt-table condensed striped"
-        :search-options="{
+      :columns="columns"
+      :rows="rows"
+      styleClass="vgt-table condensed striped"
+      :search-options="{
         enabled: true,
         placeholder: 'Введите текст для поиска',
       }"
-        :pagination-options="paginationOptions"
+      :pagination-options="paginationOptions"
     >
       <div slot="table-actions">
         <router-link to="/new-site">
-          <button type="button" class="btn btn-primary btn-sm mr-2">
+          <button type="button" class="btn btn-outline-primary btn-sm mr-2">
             + Новый участок
           </button>
         </router-link>
 
-        <button
-            class="btn btn-primary btn-sm mr-2"
-        >
+        <button class="btn btn-outline-primary btn-sm mr-2">
           <i class="fa fa-download"></i>
         </button>
-
       </div>
       <template slot="table-row" slot-scope="props">
         <span v-if="props.column.field == 'action'">
@@ -53,7 +50,7 @@ export default {
   name: 'SitesTable',
   data() {
     return {
-      columns:[
+      columns: [
         {
           label: 'Наименование участка',
           field: 'siteName',
@@ -71,18 +68,18 @@ export default {
         {
           id: 1,
           siteName: 'Kazakhstan',
-          siteComments: 'qwertyuiop'
+          siteComments: 'qwertyuiop',
         },
         {
           id: 2,
           siteName: 'Russia',
-          siteComments: 'qwertyuiop'
+          siteComments: 'qwertyuiop',
         },
         {
           id: 3,
           siteName: 'USA',
-          siteComments: 'qwertyuiop'
-        }
+          siteComments: 'qwertyuiop',
+        },
       ],
       paginationOptions: {
         enabled: true,
@@ -99,14 +96,13 @@ export default {
         pageLabel: 'стр.', // for 'pages' mode
         allLabel: 'Все',
       },
-    }
+    };
   },
   components: {
     VueGoodTable,
   },
-}
+};
 </script>
 
 <style scoped>
-
 </style>
