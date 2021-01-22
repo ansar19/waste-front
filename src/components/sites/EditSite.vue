@@ -7,43 +7,42 @@
           <d-card-header class="border-bottom">
             <h6 class="m-0">Редактировать участки</h6>
           </d-card-header>
-
-          <d-list-group flush>
-            <d-list-group-item class="p-3">
-              <d-row>
-                <d-col>
-                  <d-form>
-                    <div class="form-group">
-                      <label for="site-name"
-                        >Наименование участка: </label
-                      >
-                      <d-input
-                        id="site-name"
-                        placeholder="Введите название участка"
-                        v-model="siteName"
-                      />
-                    </div>
-                    <div class="form-group">
-                      <label for="site-comments"
-                        >Комментарии: </label
-                      >
-                      <d-input
-                        id="site-comments"
-                        placeholder="Введите комментарии"
-                        v-model="siteComments"
-                      />
-                    </div>
-
-                   
-
-                    <button type="button" class="btn btn-outline-success">
-                      Сохранить
-                    </button>
-                  </d-form>
-                </d-col>
-              </d-row>
-            </d-list-group-item>
-          </d-list-group>
+          <d-card-body>
+            <d-list-group flush>
+              <d-list-group-item class="p-3">
+                <d-row>
+                  <d-col>
+                    <d-form>
+                      <div class="form-group">
+                        <label for="site-name">Наименование участка: </label>
+                        <d-input
+                          id="site-name"
+                          placeholder="Введите название участка"
+                          v-model="siteName"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="site-comments">Комментарии: </label>
+                        <d-input
+                          id="site-comments"
+                          placeholder="Введите комментарии"
+                          v-model="siteComments"
+                        />
+                      </div>
+                    </d-form>
+                  </d-col>
+                </d-row>
+              </d-list-group-item>
+            </d-list-group>
+          </d-card-body>
+          <div class="card-footer border-top">
+            <div class="d-flex">
+              <router-link to="/sites">Отменить</router-link>
+              <button class="btn btn-success ml-auto" type="submit">
+                Сохранить
+              </button>
+            </div>
+          </div>
         </d-card>
       </d-col>
     </d-row>

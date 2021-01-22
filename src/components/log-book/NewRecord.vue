@@ -7,33 +7,33 @@
           <d-card-header class="border-bottom">
             <h6 class="m-0">Новая запись</h6>
           </d-card-header>
+          <d-card-body>
+            <d-list-group flush>
+              <d-list-group-item class="p-3">
+                <d-row>
+                  <d-col>
+                    <d-form>
+                      <!-- Участок -->
+                      <!-- vue - select -->
+                      <div class="form-group">
+                        <label for="choose-site">{{
+                          "SelectSite" | localize
+                        }}</label>
+                        <v-select
+                          id="v-select"
+                          label="countryName"
+                          v-model="site"
+                          :options="countriesOptions"
+                        >
+                          <option v-for="s in sites" :key="s.id" :value="s.id">
+                            {{ s.siteName }}
+                          </option>
+                        </v-select>
+                        {{ countryName }}
+                      </div>
+                      <!-- / vue - select -->
 
-          <d-list-group flush>
-            <d-list-group-item class="p-3">
-              <d-row>
-                <d-col>
-                  <d-form>
-                    <!-- Участок -->
-                    <!-- vue - select -->
-                    <div class="form-group">
-                      <label for="choose-site">{{
-                        "SelectSite" | localize
-                      }}</label>
-                      <v-select
-                        id="v-select"
-                        label="countryName"
-                        v-model="site"
-                        :options="countriesOptions"
-                      >
-                        <option v-for="s in sites" :key="s.id" :value="s.id">
-                          {{ s.siteName }}
-                        </option>
-                      </v-select>
-                      {{ countryName }}
-                    </div>
-                    <!-- / vue - select -->
-
-                    <!-- <div class="from-group">
+                      <!-- <div class="from-group">
                       <label for="choose-site">{{
                         "SelectSite" | localize
                       }}</label>
@@ -49,207 +49,207 @@
                       </select>
                     </div> -->
 
-                    <!-- Отход -->
+                      <!-- Отход -->
 
-                    <div class="from-group">
-                      <label for="choose-waste">{{
-                        "SelectCategory" | localize
-                      }}</label>
-                      <select
-                        ref="select"
-                        v-model="category"
-                        class="form-control-custom"
-                        id="choose-waste"
-                      >
-                        <option
-                          v-for="c in categories"
-                          :key="c.id"
-                          :value="c.id"
+                      <div class="from-group">
+                        <label for="choose-waste">{{
+                          "SelectCategory" | localize
+                        }}</label>
+                        <select
+                          ref="select"
+                          v-model="category"
+                          class="form-control-custom"
+                          id="choose-waste"
                         >
-                          {{ c.title }}
-                        </option>
-                      </select>
-                    </div>
-
-                    <!-- РОП -->
-                    <fieldset>
-                      <div
-                        class="form-check custom-control custom-radio d-block my-2"
-                      >
-                        <input
-                          class="form-check-input custom-control-input"
-                          type="radio"
-                          v-bind:value="false"
-                          v-model="isRop"
-                          name="flexRadioDefault"
-                          id="flexRadioDefault1"
-                        />
-                        <label
-                          class="form-check-label custom-control-label"
-                          for="flexRadioDefault1"
-                        >
-                          Отход не относится к группе РОП
-                        </label>
+                          <option
+                            v-for="c in categories"
+                            :key="c.id"
+                            :value="c.id"
+                          >
+                            {{ c.title }}
+                          </option>
+                        </select>
                       </div>
 
-                      <div
-                        class="form-check custom-control custom-radio d-block my-2"
-                      >
-                        <input
-                          class="form-check-input custom-control-input"
-                          type="radio"
-                          v-bind:value="true"
-                          v-model="isRop"
-                          name="flexRadioDefault"
-                          id="flexRadioDefault2"
-                        />
-                        <label
-                          class="form-check-label custom-control-label"
-                          for="flexRadioDefault2"
+                      <!-- РОП -->
+                      <fieldset>
+                        <div
+                          class="form-check custom-control custom-radio d-block my-2"
                         >
-                          РОП
-                        </label>
-                      </div>
-
-                      <template v-if="isRop == true">
-                        <div class="mb-3">
-                          <div>
-                            <label class="form-label"
-                              >Выберите из перечня продукции (товаров), на
-                              которую (которые) распространяются расширенные
-                              обязательства производителей (импортеров)</label
-                            >
-                            <v-select
-                              :options="ropOptions"
-                              label="productType"
-                              v-model="selectedRop"
-                              :selectable="
-                                (option) => !option.hasOwnProperty('group')
-                              "
-                              class="style-chooser"
-                            >
-                              <template #option="{ group, productType }">
-                                <div v-if="group" class="group">
-                                  {{ group }}
-                                </div>
-                                {{ productType }}
-                              </template>
-                            </v-select>
-                            <span
-                              >{{ selectedRop.codeTNVED }} -
-                              {{ selectedRop.productType }}</span
-                            >
-                          </div>
+                          <input
+                            class="form-check-input custom-control-input"
+                            type="radio"
+                            v-bind:value="false"
+                            v-model="isRop"
+                            name="flexRadioDefault"
+                            id="flexRadioDefault1"
+                          />
+                          <label
+                            class="form-check-label custom-control-label"
+                            for="flexRadioDefault1"
+                          >
+                            Отход не относится к группе РОП
+                          </label>
                         </div>
-                      </template>
-                      <template v-else>
-                        Отход не относится к группе РОП
-                      </template>
-                    </fieldset>
 
-                    <!-- Перевозчик -->
-
-                    <div class="from-group">
-                      <label for="choose-transporter">{{
-                        "SelectTransporter" | localize
-                      }}</label>
-                      <select
-                        ref="select2"
-                        v-model="transporter"
-                        class="form-control-custom"
-                        id="choose-transporter"
-                      >
-                        <option
-                          v-for="t in transporters"
-                          :key="t.id"
-                          :value="t.id"
+                        <div
+                          class="form-check custom-control custom-radio d-block my-2"
                         >
-                          {{ t.title }}
-                        </option>
-                      </select>
-                    </div>
+                          <input
+                            class="form-check-input custom-control-input"
+                            type="radio"
+                            v-bind:value="true"
+                            v-model="isRop"
+                            name="flexRadioDefault"
+                            id="flexRadioDefault2"
+                          />
+                          <label
+                            class="form-check-label custom-control-label"
+                            for="flexRadioDefault2"
+                          >
+                            РОП
+                          </label>
+                        </div>
 
-                    <!-- Место утилизации -->
+                        <template v-if="isRop == true">
+                          <div class="mb-3">
+                            <div>
+                              <label class="form-label"
+                                >Выберите из перечня продукции (товаров), на
+                                которую (которые) распространяются расширенные
+                                обязательства производителей (импортеров)</label
+                              >
+                              <v-select
+                                :options="ropOptions"
+                                label="productType"
+                                v-model="selectedRop"
+                                :selectable="
+                                  (option) => !option.hasOwnProperty('group')
+                                "
+                                class="style-chooser"
+                              >
+                                <template #option="{ group, productType }">
+                                  <div v-if="group" class="group">
+                                    {{ group }}
+                                  </div>
+                                  {{ productType }}
+                                </template>
+                              </v-select>
+                              <span
+                                >{{ selectedRop.codeTNVED }} -
+                                {{ selectedRop.productType }}</span
+                              >
+                            </div>
+                          </div>
+                        </template>
+                        <template v-else>
+                          Отход не относится к группе РОП
+                        </template>
+                      </fieldset>
 
-                    <div class="from-group">
-                      <label for="choose-utilizator">{{
-                        "SelectUtilizator" | localize
-                      }}</label>
-                      <select
-                        ref="select3"
-                        v-model="utilizator"
-                        class="form-control-custom"
-                        id="choose-utilizator"
-                      >
-                        <option
-                          v-for="u in utilizators"
-                          :key="u.id"
-                          :value="u.id"
+                      <!-- Перевозчик -->
+
+                      <div class="from-group">
+                        <label for="choose-transporter">{{
+                          "SelectTransporter" | localize
+                        }}</label>
+                        <select
+                          ref="select2"
+                          v-model="transporter"
+                          class="form-control-custom"
+                          id="choose-transporter"
                         >
-                          {{ u.title }}
-                        </option>
-                      </select>
-                    </div>
-
-                    <!-- Способ утилизации -->
-
-                    <div class="from-group">
-                      <label for="sel">{{
-                        "Select_Utilization_Way" | localize
-                      }}</label>
-                      <v-select
-                        v-model="utilizationWay"
-                        label="text"
-                        :options="utilizationWayOptions"
-                        :reduce="(option) => option.value"
-                      ></v-select>
-                    </div>
-
-                    <!-- Принято или отправлено -->
-
-                    <fieldset>
-                      <div class="custom-control custom-radio d-block my-2">
-                        <input
-                          id="in"
-                          class="custom-control-input"
-                          name="in"
-                          type="radio"
-                          value="income"
-                          v-model="type"
-                        />
-                        <label class="custom-control-label" for="in">
-                          <span>{{ "Income" | localize }}</span>
-                        </label>
+                          <option
+                            v-for="t in transporters"
+                            :key="t.id"
+                            :value="t.id"
+                          >
+                            {{ t.title }}
+                          </option>
+                        </select>
                       </div>
 
-                      <div class="custom-control custom-radio d-block my-2">
-                        <input
-                          id="out"
-                          class="custom-control-input"
-                          name="out"
-                          type="radio"
-                          value="outcome"
-                          v-model="type"
-                        />
-                        <label class="custom-control-label" for="out">
-                          <span>{{ "Outcome" | localize }}</span>
-                        </label>
+                      <!-- Место утилизации -->
+
+                      <div class="from-group">
+                        <label for="choose-utilizator">{{
+                          "SelectUtilizator" | localize
+                        }}</label>
+                        <select
+                          ref="select3"
+                          v-model="utilizator"
+                          class="form-control-custom"
+                          id="choose-utilizator"
+                        >
+                          <option
+                            v-for="u in utilizators"
+                            :key="u.id"
+                            :value="u.id"
+                          >
+                            {{ u.title }}
+                          </option>
+                        </select>
                       </div>
-                    </fieldset>
 
-                    <!-- Дата -->
+                      <!-- Способ утилизации -->
 
-                    <div class="from-group">
-                      <!-- <div>Opened: <span :class="[opened ? 'text-success' : 'text-danger']">{{ opened }}</span></div> -->
-                      <div>📅 {{ "Removal_Date" | localize }}:</div>
-                      <!-- <span>{{ removalDate }}</span> -->
-                      <d-datepicker v-model="removalDate" :language="ru" />
-                    </div>
+                      <div class="from-group">
+                        <label for="sel">{{
+                          "Select_Utilization_Way" | localize
+                        }}</label>
+                        <v-select
+                          v-model="utilizationWay"
+                          label="text"
+                          :options="utilizationWayOptions"
+                          :reduce="(option) => option.value"
+                        ></v-select>
+                      </div>
 
-                    <!-- decimal number - масса отходов -->
-                    <div class="from-group">
-                      <label for="amount">{{ "Amount" | localize }}</label>
-                      <!-- <input
+                      <!-- Принято или отправлено -->
+
+                      <fieldset>
+                        <div class="custom-control custom-radio d-block my-2">
+                          <input
+                            id="in"
+                            class="custom-control-input"
+                            name="in"
+                            type="radio"
+                            value="income"
+                            v-model="type"
+                          />
+                          <label class="custom-control-label" for="in">
+                            <span>{{ "Income" | localize }}</span>
+                          </label>
+                        </div>
+
+                        <div class="custom-control custom-radio d-block my-2">
+                          <input
+                            id="out"
+                            class="custom-control-input"
+                            name="out"
+                            type="radio"
+                            value="outcome"
+                            v-model="type"
+                          />
+                          <label class="custom-control-label" for="out">
+                            <span>{{ "Outcome" | localize }}</span>
+                          </label>
+                        </div>
+                      </fieldset>
+
+                      <!-- Дата -->
+
+                      <div class="from-group">
+                        <!-- <div>Opened: <span :class="[opened ? 'text-success' : 'text-danger']">{{ opened }}</span></div> -->
+                        <div>📅 {{ "Removal_Date" | localize }}:</div>
+                        <!-- <span>{{ removalDate }}</span> -->
+                        <d-datepicker v-model="removalDate" :language="ru" />
+                      </div>
+
+                      <!-- decimal number - масса отходов -->
+                      <div class="from-group">
+                        <label for="amount">{{ "Amount" | localize }}</label>
+                        <!-- <input
                         id="amount"
                         type="text"
                         v-model.number="amount"
@@ -271,39 +271,45 @@
                         >{{ "Message_MinLength" | localize }}
                         {{ $v.amount.$params.minValue.min }}</span
                       > -->
-                    </div>
+                      </div>
 
-                    <!-- Описание / комментарий -->
+                      <!-- Описание / комментарий -->
 
-                    <div class="form-group">
-                      <label for="description">{{
-                        "Description" | localize
-                      }}</label>
-                      <textarea
-                        class="form-control"
-                        id="description"
-                        v-model="description"
-                        rows="3"
-                      ></textarea>
+                      <div class="form-group">
+                        <label for="description">{{
+                          "Description" | localize
+                        }}</label>
+                        <textarea
+                          class="form-control"
+                          id="description"
+                          v-model="description"
+                          rows="3"
+                        ></textarea>
 
-                      <!-- :class="{
+                        <!-- :class="{
                           invalid:
                             $v.description.$dirty && !$v.description.required,
                         }" -->
-                      <!-- <span
+                        <!-- <span
                         v-if="$v.description.$dirty && !$v.description.required"
                         class="helper-text invalid"
                         >{{ "Message_EnterDescription" | localize }}</span
                       > -->
-                    </div>
-                    <button type="button" class="btn btn-outline-success">
-                      Сохранить
-                    </button>
-                  </d-form>
-                </d-col>
-              </d-row>
-            </d-list-group-item>
-          </d-list-group>
+                      </div>
+                    </d-form>
+                  </d-col>
+                </d-row>
+              </d-list-group-item>
+            </d-list-group>
+          </d-card-body>
+          <div class="card-footer border-top">
+            <div class="d-flex">
+              <router-link to="/history">Отменить</router-link>
+              <button class="btn btn-success ml-auto" type="submit">
+                Сохранить
+              </button>
+            </div>
+          </div>
         </d-card>
       </d-col>
     </d-row>
