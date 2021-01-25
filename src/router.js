@@ -6,7 +6,7 @@ import Limits from './views/Limits.vue';
 import Users from './views/Users.vue';
 import History from './views/History.vue';
 import NewRecord from './components/log-book/NewRecord.vue';
-
+import Converters from './views/Converters.vue';
 import Sites from './views/Sites.vue';
 import Transporters from './views/Transporters.vue';
 import Utilizers from './views/Utilizers.vue';
@@ -97,6 +97,11 @@ export default new Router({
       path: '/edit-site',
       name: 'edit-site',
       component: () => import(/* webpackChunkName: "" */ './components/sites/EditSite.vue')
+    },
+    {
+      path: '/converters',
+      name: 'converters',
+      component:Converters
     },
     {
       path: '/transporters',
