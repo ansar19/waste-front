@@ -10,6 +10,7 @@ import Converters from './views/Converters.vue';
 import Sites from './views/Sites.vue';
 import Transporters from './views/Transporters.vue';
 import Utilizers from './views/Utilizers.vue';
+import WastePasport from './views/WastePasport.vue';
 
 
 Vue.use(Router);
@@ -137,13 +138,33 @@ export default new Router({
       path: '/show-utilizer',
       name: 'show-utilizer',
       component: () => import('./components/utilizer/ShowUtilizer.vue')
-    },
-    
+    }, 
     {
       path: '/edit-utilizer',
       name: 'edit-utilizer',
       component: () => import('./components/utilizer/EditUtilizer.vue')
     },
+    {
+      path: '/waste-pasport',
+      name: 'waste-pasport',
+      component: WastePasport,
+    },
+     {
+      path: '/new-waste',
+      name: 'new-waste',
+      component: () => import('./components/waste-pasport/NewWastePasport.vue')
+    },
+     {
+      path: '/edit-waste',
+      name: 'edit-waste',
+      component: () => import('./components/waste-pasport/EditWastePasport.vue')
+    },
+     {
+      path: '/show-waste',
+      name: 'show-waste',
+      component: () => import('./components/utilizer/ShowWastePasport.vue')
+    },
+    
      {
       path: '*',
       meta: {layout: 'default', auth: false},
