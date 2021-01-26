@@ -162,7 +162,7 @@ export default new Router({
      {
       path: '/show-waste',
       name: 'show-waste',
-      component: () => import('./components/utilizer/ShowWastePasport.vue')
+      component: () => import('./components/waste-pasport/ShowWastePasport.vue')
     },
     
      {
