@@ -56,5 +56,13 @@ export default function () {
     to: {
       name: 'converters',
     },
-  }];
+  },
+  {
+    title: 'Паспорт отходов',
+    htmlBefore: '<i class="material-icons">rule_folder</i>',
+    to: {
+      name: 'waste-pasport',
+    },
+   }
+ ];
 }
