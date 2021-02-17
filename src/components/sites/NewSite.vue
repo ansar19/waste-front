@@ -5,7 +5,7 @@
         <d-card class="card-small">
           <!-- Form Example -->
           <d-card-header class="border-bottom">
-            <h6 class="m-0">Создать
+            <h6 class="m-0">Новый участок 
             </h6>
           </d-card-header>
           <div class="col s12 m6 mt-2">
