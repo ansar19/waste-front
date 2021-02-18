@@ -17,7 +17,7 @@
                 <td>{{ s.siteName }}</td>
               </tr>
               <tr>
-                <th class="text-left">Комментарии:</th>
+                <th class="text-left">Комментарии к участку:</th>
                 <td>{{ s.siteComments }}</td>
               </tr>
             </table>
@@ -40,8 +40,8 @@ export default {
     return {
       sites: [
         {
-          siteName: 'Казахстан',
-          siteComments: 'йцукенглджсмг',
+          siteName: 'Баутино',
+          siteComments: 'База поддержки',
         },
       ],
     };
