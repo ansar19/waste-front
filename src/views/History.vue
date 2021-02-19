@@ -35,7 +35,6 @@
 
 <script>
 import FilteredTable from '@/components/history/FilteredTable'
-import {users} from '@/store/ecomarine-waste-export.json'
 
 export default {
   name: 'history',
