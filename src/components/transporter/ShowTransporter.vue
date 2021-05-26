@@ -7,18 +7,14 @@
             <div class="mb-3 mx-auto"></div>
             <!-- vertical table head example -->
             <table
-              v-for="(s, index) in sites"
+              v-for="(t, index) in transporters"
               :key="index"
               class="table table-bordered"
               style="width: 100%"
             >
               <tr>
-                <th class="text-left">Наименование участка:</th>
-                <td>{{ s.siteName }}</td>
-              </tr>
-              <tr>
-                <th class="text-left">Комментарии к участку:</th>
-                <td>{{ s.siteComments }}</td>
+                <th class="text-left">Наименование перевозчика:</th>
+                <td>{{ t.transporterName }}</td>
               </tr>
             </table>
           </div>
@@ -35,13 +31,12 @@
 
 <script>
 export default {
-  name: 'show-site',
+  name: 'show-transporter',
   data() {
     return {
-      sites: [
+      transporters: [
         {
-          siteName: 'Баутино',
-          siteComments: 'База поддержки',
+          transporterName: 'Перевозчик опасных отходов',
         },
       ],
     };

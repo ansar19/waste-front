@@ -40,7 +40,7 @@
       >
         <img
           class="user-avatar rounded-circle mr-2"
-          src="@/assets/images/avatars/0.jpg"
+          src="@/assets/images/avatars/user-dummy-200x200-1.png"
           alt="User Avatar"
         />
         <span class="d-none d-md-inline-block">Sierra Brooks</span>

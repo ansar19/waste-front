@@ -6,45 +6,26 @@
           <div class="card-header border-bottom text-center">
             <div class="mb-3 mx-auto"></div>
             <!-- vertical table head example -->
-            <table class="table table-bordered" style="width: 100%">
+            <table
+              v-for="(u, index) in users"
+              :key="index"
+              class="table table-bordered"
+              style="width: 100%"
+            >
               <tr>
-                <th class="text-left">Фамилия:</th>
-                <td>{{ user.surname }}</td>
+                <th class="text-left">Имя пользователя:</th>
+                <td>{{ u.userName }}</td>
               </tr>
               <tr>
-                <th class="text-left">Имя:</th>
-                <td>{{ user.name }}</td>
+                <th class="text-left">Зарегистрирован:</th>
+                <td>{{ u.createdAt }}</td>
               </tr>
-              <tr>
-                <th class="text-left">Отчество:</th>
-                <td>{{ user.middle_name }}</td>
-              </tr>
-              <tr>
-                <th class="text-left">Должность:</th>
-                <td>{{ user.position }}</td>
-              </tr>
-              <!-- <tr>
-          <th class="text-left">Email:</th>
-          <td>{{ u.email }}</td>
-        </tr>
-        <tr>
-          <th class="text-left">Телефон:</th>
-          <td>{{ u.phone }}</td>
-        </tr>
-        <tr>
-          <th class="text-left">Должность:</th>
-          <td>{{ u.position }}</td>
-        </tr>
-        <tr>
-          <th class="text-left">Био:</th>
-          <td>{{ u.bio }}</td>
-        </tr> -->
             </table>
           </div>
-          <div class="card-footer text-muted">
-            <d-button @click="goBack()" pill>
-              <a class="text-white"> &larr; Вернуться назад </a>
-            </d-button>
+          <div class="card-footer">
+            <div class="col text-left view-report">
+              <a @click="goBack()"> &larr; Вернуться назад </a>
+            </div>
           </div>
         </div>
       </d-col>
@@ -54,17 +35,15 @@
 
 <script>
 export default {
-  name: 'ShowUser',
+  name: 'show-user',
   data() {
     return {
-      user: {
-        id: 1,
-        name: 'Иван',
-        surname: 'Иванович',
-        middle_name: 'Петрович',
-        position: 'Бригадир',
-        createdAt: '2011-10-22',
-      },
+      users: [
+        {
+          userName: 'Иван Иванов',
+          createdAt: '2011-01-01',
+        },
+      ],
     };
   },
   methods: {

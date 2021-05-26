@@ -5,60 +5,58 @@
         <d-card class="card-small">
           <!-- Form Example -->
           <d-card-header class="border-bottom">
-            <h6 class="m-0">Редактировать пользователя</h6>
+            <h6 class="m-0">Редактировать</h6>
           </d-card-header>
 
-          <d-list-group flush>
-            <d-list-group-item class="p-3">
-              <d-row>
-                <d-col>
-                  <d-form>
-                    <div class="form-group">
-                      <label>Имя:</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="username"
-                        placeholder="Иван Иванов"
-                      />
-                    </div>
-                    <div class="form-group">
-                      <label>Должность:</label>
-                      <input
-                        type="text"
-                        class="form-control"
-                        v-model="role"
-                        placeholder="Директор"
-                      />
-                    </div>
-                    <button type="submit" class="btn btn-success">
-                      Сохранить
-                    </button>
-                  </d-form>
-                </d-col>
-              </d-row>
-            </d-list-group-item>
-          </d-list-group>
+          <d-card-body>
+            <d-list-group flush>
+              <d-list-group-item class="p-3">
+                <d-row>
+                  <d-col>
+                    <d-form>
+                      <div class="form-group">
+                        <label for="user-name">Имя пользователя: </label>
+                        <d-input
+                          id="user-name"
+                          placeholder="Иван Иванов"
+                          v-model="userName"
+                        />
+                      </div>
+                      <div class="form-group">
+                        <label for="created-at">Зарегистрирован: </label>
+                        <d-input
+                          id="created-at"
+                          placeholder="2011-01-01"
+                          v-model="createdAt"
+                        />
+                      </div>
+                    </d-form>
+                  </d-col>
+                </d-row>
+              </d-list-group-item>
+            </d-list-group>
+          </d-card-body>
+          <div class="card-footer border-top">
+            <div class="d-flex">
+              <router-link to="/users">Отменить</router-link>
+              <button class="btn btn-success ml-auto" type="submit">
+                Сохранить
+              </button>
+            </div>
+          </div>
         </d-card>
       </d-col>
     </d-row>
   </d-container>
 </template>
+
 <script>
 export default {
-  name: 'EditUser',
   data() {
     return {
-      username: 'Иван Иванов',
-      role: 'Директор',
+      userName: 'Иван Иванов',
+      createdAt: '2011-01-01',
     };
   },
 };
 </script>
-
-<style scoped>
-.container {
-  margin: auto;
-  width: 50%;
-}
-</style>

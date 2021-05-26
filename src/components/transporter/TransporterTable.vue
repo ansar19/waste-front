@@ -11,9 +11,9 @@
       :pagination-options="paginationOptions"
     >
       <div slot="table-actions">
-        <router-link to="/new-record">
+        <router-link to="/new-transporter">
           <button type="button" class="btn btn-outline-primary btn-sm mr-2">
-            + Новая запись
+            + Новый перевозчик
           </button>
         </router-link>
         <!-- download doc -->
@@ -29,12 +29,12 @@
       </div>
       <template slot="table-row" slot-scope="props">
         <span v-if="props.column.field == 'action'">
-          <router-link to="/new-record">
+          <router-link to="/edit-transporter">
             <button class="btn-primary btn-small btn mr-2">
               <i class="material-icons">open_in_new</i>
             </button>
           </router-link>
-          <router-link to="/show-record">
+          <router-link to="/show-transporter">
             <button class="btn-info btn-small btn mr-2">
               <i class="material-icons">visibility</i>
             </button>
@@ -58,7 +58,7 @@ import JSZip from 'jszip';
 import { saveAs } from 'file-saver';
 
 export default {
-  name: 'log-book-table',
+  name: 'transporter-table',
   props: {
     rows: {
       required: true,
@@ -69,7 +69,7 @@ export default {
     return {
       columns: [
         {
-          label: 'Имя',
+          label: 'Наименование перевозчика',
           field: 'name',
         },
         {

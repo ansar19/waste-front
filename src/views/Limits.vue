@@ -1,33 +1,29 @@
 <template>
   <div class="main-content-container container-fluid px-4">
-    <!-- Page Header -->
     <div class="page-header row no-gutters py-4">
       <div class="col-12 col-sm-4 text-center text-sm-left mb-0">
-        <span class="text-uppercase page-subtitle"> Участки</span>
+        <span class="text-uppercase page-subtitle">{{ pageTitle }}</span>
       </div>
     </div>
-    <!-- Default Light Table -->
     <div class="row">
       <div class="col">
-        <div class="card card-small mb-4">
-          <div class="card-body">
-            <SitesTable />
-          </div>
-        </div>
+        <LimitMass />
       </div>
     </div>
   </div>
 </template>
 
 <script>
-import SitesTable from '@/components/sites/SitesTable';
+import LimitMass from '@/components/limit/LimitMass';
 
 export default {
   data() {
-    return {};
+    return {
+      pageTitle: 'Лимиты',
+    };
   },
   components: {
-    SitesTable,
+    LimitMass,
   },
 };
 </script>

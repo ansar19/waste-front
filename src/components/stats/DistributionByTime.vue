@@ -163,7 +163,7 @@ export default {
   props: {
     title: {
       type: String,
-      default: 'Распределние по вренмени',
+      default: 'Распределение по времени',
     },
     chartData: {
       type: Object,
