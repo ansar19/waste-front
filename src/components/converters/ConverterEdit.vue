@@ -4,7 +4,8 @@
       <div class="page-subtitle">
       </div>
       <div class="card-body">
-        <form @submit.prevent="submitHandler">
+        <ValidationObserver v-slot="{handleSubmit}">
+          <form @submit.prevent="handleSubmit(onSubmit)">
           <div class="table-responsive">
             <table class="table table-stripped table-hover">
               <caption class="caption-top">Редактор списка коэффициентов</caption>
@@ -18,13 +19,34 @@
               <tbody>
               <tr v-for="(unitOfMeasurement, k) in unitOfMeasurements" :key="k">
                 <td>
-                  <input class="form-control form-control-input" type="text" v-model="unitOfMeasurement.name" />
+                  <ValidationProvider name="name-waste" rules="nullInput" v-slot="{errors,classes}" >
+                    <input class="form-control form-control-input"
+                           type="text"
+                           v-model="unitOfMeasurement.name"
+                           :class="classes"
+                    />
+                    <span class="null_error">{{ errors[0] }}</span>
+                  </ValidationProvider>
                 </td>
                 <td>
-                  <input class="form-control form-control-input" type="text" v-model.number="unitOfMeasurement.coef" />
+                  <ValidationProvider name="coef-waste" rules="nullInput" v-slot="{errors,classes}" >
+                    <input class="form-control form-control-input"
+                           type="text"
+                           v-model.number="unitOfMeasurement.coef"
+                           :class="classes"
+                    />
+                    <span class="null_error">{{ errors[0] }}</span>
+                  </ValidationProvider>
                 </td>
                 <td>
-                  <input class="form-control form-control-input" type="text" v-model="unitOfMeasurement.comment" />
+                  <ValidationProvider name="comment-waste" rules="nullInput" v-slot="{errors,classes}" >
+                    <input class="form-control form-control-input"
+                           type="text"
+                           v-model="unitOfMeasurement.comment"
+                           :class="classes"
+                    />
+                    <span class="null_error">{{ errors[0] }}</span>
+                  </ValidationProvider>
                 </td>
               </tr>
               </tbody>
@@ -36,6 +58,7 @@
             <i class="material-icons right">send</i>
           </button>
         </form>
+        </ValidationObserver>
       </div>
     </div>
   </div>
@@ -44,7 +67,20 @@
 <script>
 // import { required, minValue } from 'vuelidate/lib/validators'
 // import localizeFilter from '@/filters/localize.filter'
+import {ValidationProvider, extend} from 'vee-validate/dist/vee-validate.full';
+import {configure} from 'vee-validate';
 
+extend('nullInput', {
+  validate(value) {
+    return {
+      required: true,
+      valid: ['', null, undefined].indexOf(value) === -1,
+    };
+  },
+  computesRequired: true,
+  message: " * Oбязательное поле"
+
+});
 export default {
   props: {
     converters: {
@@ -107,10 +143,27 @@ export default {
     coef: '',
     current: null,
   }),
+  methods:{
+    onSubmit(){
+    },
+    goBack() {
+      this.$router.go(-1);
+    },
+  }
 }
 </script>
 
 <style scoped>
+.form-control-input.invalid {
+  border-bottom: 1px solid red;
+}
+textarea.invalid{
+  border: 1px solid red;
+}
+.null_error{
+  color: red;
+  font-weight: normal;
+}
 .caption-top {
   caption-side: top;
 }

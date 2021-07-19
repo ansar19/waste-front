@@ -1,7 +1,11 @@
 /* eslint-disable */
 import Vue from 'vue';
-import Vuex from 'vuex'
+import Vuex from 'vuex';
+import { ValidationProvider } from 'vee-validate/dist/vee-validate.full'
+import {ValidationObserver} from 'vee-validate'
 import ShardsVue from 'shards-vue';
+Vue.component('ValidationObserver',ValidationObserver);
+Vue.component('ValidationProvider',ValidationProvider);
 
 // Styles
 import 'bootstrap/dist/css/bootstrap.css';
@@ -22,6 +26,7 @@ import Default from '@/layouts/Default.vue';
 
 
 Vue.use(Vuex);
+
 
 ShardsVue.install(Vue);
 

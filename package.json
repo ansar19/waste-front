@@ -19,6 +19,7 @@
     "lodash": "^4.17.19",
     "shards-ui": "^2.1.0",
     "shards-vue": "^1.0.4",
+    "vee-validate": "^3.4.10",
     "vue": "^2.6.11",
     "vue-good-table": "^2.21.2",
     "vue-router": "^3.0.1",

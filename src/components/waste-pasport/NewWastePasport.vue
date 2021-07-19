@@ -9,300 +9,426 @@
       <div class="col">
         <div class="card card-small mb-4">
           <div class="card-body">
-            <form @submit.prevent="submitHandler">
-              <div class="from-group">
-                <label for="name1">Наименование отходов</label>
-                <input id="name1" type="text" v-model="title"
-                       class="form-control" />
-              </div>
+            <ValidationObserver v-slot="{handleSubmit}">
+              <form @submit.prevent="handleSubmit(onSubmit)">
+                <div class="from-group">
+                  <label for="name1">Наименование отходов</label>
+                  <ValidationProvider name="name-waste-pasport" rules="nullInput" v-slot="{errors,classes}" >
+                    <input id="name1"
+                           type="text"
+                           v-model="title"
+                           class="form-control"
+                           :class="classes"
+                    />
+                    <span class="null_error">{{ errors[0] }}</span>
+                  </ValidationProvider>
+                </div>
 
-              <!-- Код отхода -->
-              <div class="from-group">
-                <label for="waste-code1">Код отхода</label>
-                <input id="waste-code1" type="text" v-model="wasteCode" class="form-control" />
-              </div>
+                <!-- Код отхода -->
+                <div class="from-group">
+                  <label for="waste-code1">Код отхода</label>
+                  <ValidationProvider name="waste-code1" rules="nullInput" v-slot="{errors,classes}" >
+                    <input id="waste-code1"
+                           type="text"
+                           v-model="wasteCode"
+                           class="form-control"
+                           :class="classes"
+                    />
+                    <span class="null_error">{{ errors[0] }}</span>
+                  </ValidationProvider>
+                </div>
 
-              <!-- Агрегатное состояние отходов -->
-              <div class="from-group">
-                <label>Агрегатное состояние отходов</label>
-                <p>
-                  <label for="solid1">
-                    <input name="group2" type="radio" id="solid1" value="solid" class="mr-2" v-model="wasteAggregateState" />
-                    <span>Твердые</span>
-                  </label>
-                  <br />
-                  <label for="liquid1">
-                    <input name="group2" type="radio" id="liquid1" value="liquid" class="mr-2"  v-model="wasteAggregateState" />
-                    <span>Жидкие</span>
-                  </label>
-                  <br />
-                  <label for="pasty1">
-                    <input name="group2" type="radio" id="pasty1" value="pasty" class="mr-2"  v-model="wasteAggregateState" />
-                    <span>Пастообразные</span>
-                  </label>
-                  <br />
-                </p>
-              </div>
+                <!-- Агрегатное состояние отходов -->
+                <div class="from-group">
+                  <label>Агрегатное состояние отходов</label>
+                  <p>
+                    <label for="solid1">
+                      <input name="group2" type="radio" id="solid1" value="solid" class="mr-2" v-model="wasteAggregateState" />
+                      <span>Твердые</span>
+                    </label>
+                    <br />
+                    <label for="liquid1">
+                      <input name="group2" type="radio" id="liquid1" value="liquid" class="mr-2"  v-model="wasteAggregateState" />
+                      <span>Жидкие</span>
+                    </label>
+                    <br />
+                    <label for="pasty1">
+                      <input name="group2" type="radio" id="pasty1" value="pasty" class="mr-2"  v-model="wasteAggregateState" />
+                      <span>Пастообразные</span>
+                    </label>
+                    <br />
+                  </p>
+                </div>
 
-              <!-- Происхождение отходов -->
+                <!-- Происхождение отходов -->
 
-              <div class="input-field">
-                <h5>Происхождение отходов</h5>
-                <table class="meta-table">
-                  <!-- <thead>
-                    <tr>
-                      <th>
-                        <label>{{'Waste_Source' | localize}}</label>
-                      </th>
-                      <th>
-                        <label>{{'Waste_Process_Name' | localize}}</label>
-                      </th>
-                      <th>
-                        <label>{{'Waste_Hazard_Property' | localize}}</label>
-                      </th>
-                      <th></th>
+                <div class="input-field">
+                  <h5>Происхождение отходов</h5>
+                  <table class="meta-table">
+                    <!-- <thead>
+                      <tr>
+                        <th>
+                          <label>{{'Waste_Source' | localize}}</label>
+                        </th>
+                        <th>
+                          <label>{{'Waste_Process_Name' | localize}}</label>
+                        </th>
+                        <th>
+                          <label>{{'Waste_Hazard_Property' | localize}}</label>
+                        </th>
+                        <th></th>
+                      </tr>
+                    </thead>-->
+                    <tbody>
+                    <tr class="item" v-for="(waste, index) in wastesOrigin" :key="index">
+                      <td>
+                        <ValidationProvider name="1-name-waste-pasport" rules="nullInput" v-slot="{errors,classes}" >
+                          <label>
+                            Перечень и наименование исходных материалов, из которых образовались отходы
+                          </label>
+                          <input type="text"
+                                 class="form-control"
+                                 v-model="waste.wasteSource"
+                                 :class="classes"
+                          />
+                          <span class="null_error">{{ errors[0] }}</span>
+                        </ValidationProvider>
+                      </td>
+                      <td>
+                        <ValidationProvider name="2-name-waste-pasport" rules="nullInput" v-slot="{errors,classes}" >
+                          <label>
+                              Наименование технологического процесса
+                            </label>
+                            <input type="text"
+                                   class="form-control"
+                                   v-model="waste.processName"
+                                   :class="classes"
+                            />
+                            <span class="null_error">{{ errors[0] }}</span>
+                        </ValidationProvider>
+                      </td>
+                      <td>
+                        <ValidationProvider name="3-name-waste-pasport" rules="nullInput" v-slot="{errors,classes}" >
+                            <label>
+                              Наименование технологического процесса
+                            </label>
+                            <input type="text"
+                                   class="form-control"
+                                   v-model="waste.hazardProperty"
+                                   :class="classes" />
+                            <span class="null_error">{{ errors[0] }}</span>
+                        </ValidationProvider>
+                      </td>
+                      <td class="text-right">
+                        <button class="btn btn-danger waves-effect waves-light" @click.prevent="deleteItem(index)">
+                          <i class="material-icons">delete</i>
+                        </button>
+                      </td>
                     </tr>
-                  </thead>-->
-                  <tbody>
-                  <tr class="item" v-for="(waste, index) in wastesOrigin" :key="index">
-                    <td>
-                      <label>
-                        Перечень и наименование исходных материалов, из которых образовались отходы
-                      </label>
-                      <input type="text" class="form-control" v-model="waste.wasteSource" />
-                    </td>
-                    <td>
-                      <label>
-                        Наименование технологического процесса
-                      </label>
-                      <input type="text" class="form-control" v-model="waste.processName" />
-                    </td>
-                    <td>
-                      <label>
-                        Наименование технологического процесса
-                      </label>
-                      <input type="text" class="form-control" v-model="waste.hazardProperty" />
-                    </td>
-                    <td class="text-right">
-                      <button class="btn btn-danger waves-effect waves-light" @click.prevent="deleteItem(index)">
-                        <i class="material-icons">delete</i>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="4">
-                      <button class="waves-effect waves-light btn-small" @click.prevent="addRow">
-                        <i class="material-icons">exposure_plus_1</i>
-                      </button>
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
+                    <tr>
+                      <td colspan="4">
+                        <button class="waves-effect waves-light btn-small" @click.prevent="addRow">
+                          <i class="material-icons">exposure_plus_1</i>
+                        </button>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
 
-              <!-- Химический состав отходов и описание опасных свойств их компонентов: -->
+                <!-- Химический состав отходов и описание опасных свойств их компонентов: -->
 
-              <div class="input-field table-responsive">
-                <h5>Химический состав отходов и описание опасных свойств их компонентов</h5>
-                <table class="meta-table">
-                  <!--         <thead>-->
-                  <!--            <tr>-->
-                  <!--              <th>-->
-                  <!--                <label>Наименование компонента отходов</label>-->
-                  <!--              </th>-->
-                  <!--              <th>-->
-                  <!--                <label>Концентрации Сi, мг/кг</label>-->
-                  <!--              </th>-->
-                  <!--              <th>-->
-                  <!--                <label>Наименование и единица измерения</label>-->
-                  <!--              </th>-->
-                  <!--              <th>-->
-                  <!--                <label>Значение</label>-->
-                  <!--              </th>-->
-                  <!--              <th>-->
-                  <!--                <label>Уровень опасности отхода</label>-->
-                  <!--              </th>-->
-                  <!--              <th>-->
-                  <!--                <label>Уровень опасности отхода (значение)</label>-->
-                  <!--              </th>-->
-                  <!--              <th>-->
-                  <!--                <label>Обозначение документа, из которого взята характеристика</label>-->
-                  <!--              </th>-->
-                  <!--              <th></th>-->
-                  <!--            </tr>-->
-                  <!--            </thead>-->
-                  <tbody>
-                  <tr class="item" v-for="(w, idx) in wastesComposition" :key="idx">
-                    <td>
-                      <label>Наименование компонента отходов</label>
-                      <input type="text" class="form-control" v-model="w.wasteComponentName" />
-                    </td>
-                    <td>
-                      <label>Концентрации Сi, мг/кг</label>
-                      <input type="number" class="form-control" v-model.number="w.wasteComponentConcentration" />
-                    </td>
-                    <td>
-                      <label>Наименование и единица измерения</label>
-                      <input type="text" class="form-control" v-model="w.wasteIndexSourceName" />
-                    </td>
-                    <td>
-                      <label>Значение</label>
-                      <input type="text" class="form-control" v-model="w.wasteIndexSourceValue" />
-                    </td>
-                    <td>
-                      <label>Уровень опасности отхода</label>
-                      <select v-model="w.hazWasteLevel" class="custom-select browser-default">
-                        <option value disabled selected>Пожалуйста выберите из списка</option>
-                        <option value="amber">A</option>
-                        <option value="red">R</option>
-                        <option value="green">G</option>
-                        <option value="na">Не применимо</option>
-                      </select>
-                    </td>
+                <div class="input-field table-responsive">
+                  <h5>Химический состав отходов и описание опасных свойств их компонентов</h5>
+                  <table class="meta-table">
+                    <!--         <thead>-->
+                    <!--            <tr>-->
+                    <!--              <th>-->
+                    <!--                <label>Наименование компонента отходов</label>-->
+                    <!--              </th>-->
+                    <!--              <th>-->
+                    <!--                <label>Концентрации Сi, мг/кг</label>-->
+                    <!--              </th>-->
+                    <!--              <th>-->
+                    <!--                <label>Наименование и единица измерения</label>-->
+                    <!--              </th>-->
+                    <!--              <th>-->
+                    <!--                <label>Значение</label>-->
+                    <!--              </th>-->
+                    <!--              <th>-->
+                    <!--                <label>Уровень опасности отхода</label>-->
+                    <!--              </th>-->
+                    <!--              <th>-->
+                    <!--                <label>Уровень опасности отхода (значение)</label>-->
+                    <!--              </th>-->
+                    <!--              <th>-->
+                    <!--                <label>Обозначение документа, из которого взята характеристика</label>-->
+                    <!--              </th>-->
+                    <!--              <th></th>-->
+                    <!--            </tr>-->
+                    <!--            </thead>-->
+                    <tbody>
+                    <tr class="item" v-for="(w, idx) in wastesComposition" :key="idx">
+                      <td>
+                        <ValidationProvider name="chim-1-name-waste-pasport" rules="nullInput" v-slot="{errors,classes}" >
+                          <label>Наименование компонента отходов</label>
+                          <input type="text"
+                                 class="form-control"
+                                 v-model="w.wasteComponentName"
+                                 :class="classes"
+                          />
+                          <span class="null_error">{{ errors[0] }}</span>
+                        </ValidationProvider>
 
-                    <td>
-                      <label>Уровень опасности отхода (значение)</label>
-                      <input type="number" class="form-control" v-model.number="w.hazWasteLevelValue" />
-                    </td>
-                    <td>
-                      <label>Обозначение документа, из которого взята характеристика</label>
-                      <input type="text" class="form-control" v-model="w.wasteIndexSourceDocument" />
-                    </td>
-                    <td class="text-right small-font">
-                      <button class="btn btn-danger waves-effect waves-light" @click.prevent="deleteWasteComposition(idx)">
-                        <i class="material-icons">delete</i>
-                      </button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td colspan="4">
-                      <button class="waves-effect waves-light btn-small" @click.prevent="addWasteComposition">
-                        <i class="material-icons">exposure_plus_1</i>
-                      </button>
-                    </td>
-                  </tr>
-                  </tbody>
-                </table>
-              </div>
+                      </td>
+                      <td>
+                        <ValidationProvider name="chim-2-name-waste-pasport" rules="nullInput" v-slot="{errors,classes}" >
+                          <label>Концентрации Сi, мг/кг</label>
+                          <input type="number" class="form-control" v-model.number="w.wasteComponentConcentration" />
+                          <span class="null_error">{{ errors[0] }}</span>
+                        </ValidationProvider>
+                      </td>
+                      <td>
+                        <ValidationProvider name="chim-3-name-waste-pasport" rules="nullInput" v-slot="{errors,classes}" >
+                          <label>Наименование и единица измерения</label>
+                          <input type="text" class="form-control" v-model="w.wasteIndexSourceName" />
+                          <span class="null_error">{{ errors[0] }}</span>
+                        </ValidationProvider>
+                      </td>
+                      <td>
+                        <ValidationProvider name="chim-4-name-waste-pasport" rules="nullInput" v-slot="{errors,classes}" >
+                          <label>Значение</label>
+                          <input type="text" class="form-control" v-model="w.wasteIndexSourceValue" />
+                          <span class="null_error">{{ errors[0] }}</span>
+                        </ValidationProvider>
+                      </td>
+                      <td>
+                        <ValidationProvider name="chim-5-name-waste-pasport" rules="nullInput" v-slot="{errors,classes}" >
+                          <label>Уровень опасности отхода</label>
+                          <select v-model="w.hazWasteLevel" class="custom-select browser-default">
+                            <option value disabled selected>Пожалуйста выберите из списка</option>
+                            <option value="amber">A</option>
+                            <option value="red">R</option>
+                            <option value="green">G</option>
+                            <option value="na">Не применимо</option>
+                          </select>
+                          <span class="null_error">{{ errors[0] }}</span>
+                        </ValidationProvider>
+                      </td>
 
-              <!-- Рекомендуемый способ переработки отходов -->
-              <div class="form-group">
-                <label for="recycling-type1">Рекомендуемый способ переработки отходов</label>
-                <textarea id="recycling-type1" type="text" v-model="recyclingType"
-                          class="form-control form-control-textarea" aria-label="With textarea"></textarea>
-                <!--          <span v-if="$v.recyclingType.$dirty && !$v.recyclingType.required"-->
-                <!--                class="helper-text invalid">{{'Message_Recycling_Type_Title'|localize}}</span>-->
-              </div>
+                      <td>
+                        <ValidationProvider name="chim-6-name-waste-pasport" rules="nullInput" v-slot="{errors,classes}" >
+                          <label>Уровень опасности отхода (значение)</label>
+                          <input type="number" class="form-control" v-model.number="w.hazWasteLevelValue" />
+                          <span class="null_error">{{ errors[0] }}</span>
+                        </ValidationProvider>
+                      </td>
+                      <td>
+                        <ValidationProvider name="chim-7-name-waste-pasport" rules="nullInput" v-slot="{errors,classes}" >
+                          <label>Обозначение документа, из которого взята характеристика</label>
+                          <input type="text" class="form-control" v-model="w.wasteIndexSourceDocument" />
+                          <span class="null_error">{{ errors[0] }}</span>
+                        </ValidationProvider>
+                      </td>
+                      <td class="text-right small-font">
+                        <button class="btn btn-danger waves-effect waves-light" @click.prevent="deleteWasteComposition(idx)">
+                          <i class="material-icons">delete</i>
+                        </button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td colspan="4">
+                        <button class="waves-effect waves-light btn-small" @click.prevent="addWasteComposition">
+                          <i class="material-icons">exposure_plus_1</i>
+                        </button>
+                      </td>
+                    </tr>
+                    </tbody>
+                  </table>
+                </div>
 
-              <!-- необходимые меры предосторожности при обращении с отходами -->
-              <div class="form-group">
-                <label for="precaution-type1">Необходимые меры предосторожности при обращении с отходами</label>
-                <textarea id="precaution-type1" type="textarea" v-model="precaution"
-                          class="form-control form-control-textarea"></textarea>
-                <!--          <span v-if="$v.precaution.$dirty && !$v.precaution.required"-->
-                <!--                class="helper-text invalid">{{'Message_Precaution_Title'|localize}}</span>-->
-              </div>
-              <!-- END необходимые меры предосторожности при обращении с отходами -->
+                <!-- Рекомендуемый способ переработки отходов -->
+                <div class="form-group">
+                  <ValidationProvider name="recycling-type1" rules="nullInput" v-slot="{errors,classes}" >
+                    <label for="recycling-type1">Рекомендуемый способ переработки отходов</label>
+                      <textarea id="recycling-type1"
+                                type="text"
+                                v-model="recyclingType"
+                                class="form-control form-control-textarea"
+                                aria-label="With textarea"
+                                :class="classes"
 
-              <!-- Требование к транспортировке отходов и проведение погрузо-разгрузочных
-              работ-->
-              <div class="form-group">
-                <label for="transportation-requirements1">Требование к транспортировке отходов и проведение погрузо-разгрузочных
-                  работ</label>
-                <textarea id="transportation-requirements1" type="textarea" v-model="transportationRequirements"
-                          class="form-control form-control-textarea"></textarea>
-              </div>
-              <!-- END Требование к транспортировке отходов и проведение погрузо-разгрузочных
-              работ-->
+                      />
+                      <span class="null_error">{{ errors[0] }}</span>
+                  </ValidationProvider>
+                  <!--          <span v-if="$v.recyclingType.$dirty && !$v.recyclingType.required"-->
+                  <!--                class="helper-text invalid">{{'Message_Recycling_Type_Title'|localize}}</span>-->
+                </div>
 
-              <!-- Меры по предупреждению и ликвидации чрезвычайных ситуаций природного и техногенного
-              характера и их последствий-->
-              <div class="form-group">
-                <label for="emergency-requirements1">Меры по предупреждению и ликвидации чрезвычайных ситуаций природного и техногенного
-                  характера и их последствий</label>
-                <textarea id="emergency-requirements1" type="textarea" v-model="emergency" class="form-control form-control-textarea"></textarea>
-              </div>
+                <!-- необходимые меры предосторожности при обращении с отходами -->
+                <div class="form-group">
+                  <ValidationProvider name="precaution-type1" rules="nullInput" v-slot="{errors,classes}" >
+                    <label for="precaution-type1">Необходимые меры предосторожности при обращении с отходами</label>
+                    <textarea id="precaution-type1"
+                              type="textarea"
+                              v-model="precaution"
+                              class="form-control form-control-textarea"
+                              :class="classes"
+                    />
+                    <span class="null_error">{{ errors[0] }}</span>
+                  </ValidationProvider>
 
-              <!-- Дополнительная информация -->
-              <div class="form-group">
-                <label for="additional-info1">Дополнительная информация</label>
-                <textarea id="additional-info1" type="textarea" v-model="additionalInfo" class="form-control form-control-textarea"></textarea>
-              </div>
+                  <!--          <span v-if="$v.precaution.$dirty && !$v.precaution.required"-->
+                  <!--                class="helper-text invalid">{{'Message_Precaution_Title'|localize}}</span>-->
+                </div>
+                <!-- END необходимые меры предосторожности при обращении с отходами -->
 
-              <!-- waste color -->
-              <label>Цвет отхода</label>
-              <p>
-                <label for="one">
-                  <input name="group1" class="mr-2" type="radio" id="one" value="red" v-model="wasteColor.color" />
-                  <span>Красный</span>
-                </label>
-                <br />
-                <label for="two">
-                  <input name="group1" class="mr-2" type="radio" id="two" value="amber" v-model="wasteColor.color" />
-                  <span>Янтарный</span>
-                </label>
-                <br />
-                <label for="three">
-                  <input name="group1" class="mr-2" type="radio" id="three" value="green" v-model="wasteColor.color" />
-                  <span>Зеленый</span>
-                </label>
-                <br />
-                <label for="four">
-                  <input name="group1" class="mr-2" type="radio" id="four" value="na" v-model="wasteColor.color" />
-                  <span>Не применимо</span>
-                </label>
-                <br />
-                <!--          <span v-if="$v.wasteColor.colorq.$dirty && !$v.wasteColor.color.required"-->
-                <!--                class="helper-text invalid">{{'Message_Waste_Type_Title'|localize}}</span>-->
-              </p>
+                <!-- Требование к транспортировке отходов и проведение погрузо-разгрузочных
+                работ-->
+                <div class="form-group">
+                  <ValidationProvider name="transportation-requirements1" rules="nullInput" v-slot="{errors,classes}" >
+                    <label for="transportation-requirements1">Требование к транспортировке отходов и проведение погрузо-разгрузочных
+                      работ</label>
+                    <textarea id="transportation-requirements1"
+                              type="textarea"
+                              v-model="transportationRequirements"
+                              class="form-control form-control-textarea"
+                              :class="classes"
+                    />
+                    <span class="null_error">{{ errors[0] }}</span>
+                  </ValidationProvider>
+                </div>
+                <!-- END Требование к транспортировке отходов и проведение погрузо-разгрузочных
+                работ-->
 
-              <!-- для отчета по инвентаризации отходов -->
+                <!-- Меры по предупреждению и ликвидации чрезвычайных ситуаций природного и техногенного
+                характера и их последствий-->
+                <div class="form-group">
+                  <ValidationProvider name="emergency-requirements1" rules="nullInput" v-slot="{errors,classes}" >
+                    <label for="emergency-requirements1">Меры по предупреждению и ликвидации чрезвычайных ситуаций природного и техногенного
+                      характера и их последствий</label>
+                    <textarea id="emergency-requirements1"
+                              type="textarea"
+                              v-model="emergency"
+                              class="form-control form-control-textarea"
+                              :class="classes"
+                    />
+                    <span class="null_error">{{ errors[0] }}</span>
+                  </ValidationProvider>
 
-              <div class="form-group">
-                <label for="waste-types1">Вид отходов</label>
-                <select v-model="wasteColor.wasteType" v-if="wasteColor.color" class="browser-default">
-                  <option id="waste-types1" v-for="(option, id) in setOptions" v-bind:value="option" v-bind:key="id">
-                    {{option.text}}</option>
-                </select>
-                <br />
-              </div>
+                </div>
 
-              <!-- индекс отхода  -->
+                <!-- Дополнительная информация -->
+                <div class="form-group">
+                  <ValidationProvider name="additional-info1" rules="nullInput" v-slot="{errors,classes}" >
+                    <label for="additional-info1">Дополнительная информация</label>
+                    <textarea id="additional-info1"
+                              type="textarea"
+                              v-model="additionalInfo"
+                              class="form-control form-control-textarea"
+                              :class="classes"
+                    />
+                    <span class="null_error">{{ errors[0] }}</span>
+                  </ValidationProvider>
+                </div>
 
-              <div class="form-group">
-                <label for="waste-index1">Индекс отхода</label>
-                <input id="waste-index1" type="text" v-model="wasteIndex" class="form-control" />
-              </div>
+                <!-- waste color -->
+                <label>Цвет отхода</label>
+                <p>
+                  <label for="one">
+                    <input name="group1" class="mr-2" type="radio" id="one" value="red" v-model="wasteColor.color" />
+                    <span>Красный</span>
+                  </label>
+                  <br />
+                  <label for="two">
+                    <input name="group1" class="mr-2" type="radio" id="two" value="amber" v-model="wasteColor.color" />
+                    <span>Янтарный</span>
+                  </label>
+                  <br />
+                  <label for="three">
+                    <input name="group1" class="mr-2" type="radio" id="three" value="green" v-model="wasteColor.color" />
+                    <span>Зеленый</span>
+                  </label>
+                  <br />
+                  <label for="four">
+                    <input name="group1" class="mr-2" type="radio" id="four" value="na" v-model="wasteColor.color" />
+                    <span>Не применимо</span>
+                  </label>
+                  <br />
+                  <!--          <span v-if="$v.wasteColor.colorq.$dirty && !$v.wasteColor.color.required"-->
+                  <!--                class="helper-text invalid">{{'Message_Waste_Type_Title'|localize}}</span>-->
+                </p>
 
-              <!-- END -->
+                <!-- для отчета по инвентаризации отходов -->
 
-              <!-- Limit waste -->
+                <div class="form-group">
+                  <label for="waste-types1">Вид отходов</label>
+                  <select v-model="wasteColor.wasteType" v-if="wasteColor.color" class="browser-default">
+                    <option id="waste-types1" v-for="(option, id) in setOptions" v-bind:value="option" v-bind:key="id">
+                      {{option.text}}</option>
+                  </select>
+                  <br />
+                </div>
 
-              <div class="form-group">
-                <label for="limit1">Лимит</label>
-                <input id="limit1" type="number" v-model.number="limit"
-                       class="form-control" />
-                <!--          <span v-if="$v.limit.$dirty && !$v.limit.minValue"-->
-                <!--                class="helper-text invalid">{{'Message_MinLength'|localize}} {{$v.limit.$params.minValue.min}}</span>-->
-              </div>
+                <!-- индекс отхода  -->
 
-              <!-- Limit KZT -->
+                <div class="form-group">
+                  <ValidationProvider name="waste-index1" rules="nullInput" v-slot="{errors,classes}" >
+                    <label for="waste-index1">Индекс отхода</label>
+                    <input id="waste-index1"
+                           type="text"
+                           v-model="wasteIndex"
+                           class="form-control"
+                           :class="classes"
+                    />
+                    <span class="null_error">{{ errors[0] }}</span>
+                  </ValidationProvider>
 
-              <div class="form-group">
-                <label for="limitKZT1">Лимит KZT</label>
-                <input id="limitKZT1" type="number" v-model.number="limitKZT"
-                       class="form-control" />
-                <!--          <span v-if="$v.limitKZT.$dirty && !$v.limitKZT.minValue"-->
-                <!--                class="helper-text invalid">{{'Message_MinLength'|localize}} {{$v.limit.$params.minValue.min}}</span>-->
-              </div>
-              <button class="btn btn-primary waves-effect waves-light mb-4 mr-2" @click="goBack" type="submit">
-                Назад
-              </button>
-              <button class="btn btn-success waves-effect waves-light mb-4" type="submit">
-                Создать
-                <i class="material-icons right">send</i>
-              </button>
-            </form>
+                </div>
+
+                <!-- END -->
+
+                <!-- Limit waste -->
+
+                <div class="form-group">
+                  <ValidationProvider name="limit1" rules="nullInput" v-slot="{errors,classes}" >
+                    <label for="limit1">Лимит</label>
+                    <input id="limit1" type="number"
+                           v-model.number="limit"
+                           class="form-control"
+                           :class="classes"
+
+                    />
+                    <span class="null_error">{{ errors[0] }}</span>
+                  </ValidationProvider>
+                  <!--          <span v-if="$v.limit.$dirty && !$v.limit.minValue"-->
+                  <!--                class="helper-text invalid">{{'Message_MinLength'|localize}} {{$v.limit.$params.minValue.min}}</span>-->
+                </div>
+
+                <!-- Limit KZT -->
+
+                <div class="form-group">
+                  <ValidationProvider name="limitKZT1" rules="nullInput" v-slot="{errors,classes}" >
+                    <label for="limitKZT1">Лимит KZT</label>
+                    <input id="limitKZT1" type="number"
+                           v-model.number="limitKZT"
+                           class="form-control"
+                           :class="classes"
+                    />
+                    <span class="null_error">{{ errors[0] }}</span>
+                  </ValidationProvider>
+                  <!--          <span v-if="$v.limitKZT.$dirty && !$v.limitKZT.minValue"-->
+                  <!--                class="helper-text invalid">{{'Message_MinLength'|localize}} {{$v.limit.$params.minValue.min}}</span>-->
+                </div>
+                <button class="btn btn-primary waves-effect waves-light mb-4 mr-2" @click="goBack" type="submit">
+                  Назад
+                </button>
+                <button class="btn btn-success waves-effect waves-light mb-4" type="submit">
+                  Создать
+                  <i class="material-icons right">send</i>
+                </button>
+              </form>
+            </ValidationObserver>
           </div>
         </div>
       </div>
@@ -311,7 +437,20 @@
 </template>
 
 <script>
+import {ValidationProvider, extend} from 'vee-validate/dist/vee-validate.full';
+import {configure} from 'vee-validate';
 
+extend('nullInput', {
+  validate(value) {
+    return {
+      required: true,
+      valid: ['', null, undefined].indexOf(value) === -1,
+    };
+  },
+  computesRequired: true,
+  message: " * Oбязательное поле"
+
+});
 export default {
   data: () => ({
     title: '',
@@ -377,6 +516,16 @@ export default {
 </script>
 
 <style scoped>
+.form-control.invalid {
+  border-bottom: 1px solid red;
+}
+textarea.invalid{
+  border: 1px solid red;
+}
+.null_error{
+  color: red;
+  font-weight: normal;
+}
 .form-control{
   background-color: transparent;
   border: none;
